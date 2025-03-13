@@ -110,7 +110,7 @@ function App() {
           heroOpacity={heroOpacity}
         />
         <FormalRequest />
-        <CouplePortrait />
+        {/* <CouplePortrait /> */}
         <InvitationDetails
           leftColumnY={leftColumnY}
           rightColumnY={rightColumnY}

@@ -81,25 +81,6 @@ export function FormalRequest() {
           </motion.div>
 
           <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ margin: "-100px" }}
-            className="space-y-4 mb-12"
-          >
-            <p className="text-2xl font-serif text-gold-600">
-              Saturday, September 14th, 2024
-            </p>
-            <p className="text-xl text-gray-700">
-              Four o'clock in the afternoon
-            </p>
-            <p className="text-xl text-gray-700">The Grand Plaza Hotel</p>
-            <p className="text-xl text-gray-700">
-              123 Elegant Avenue, New York, NY
-            </p>
-          </motion.div>
-
-          <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}

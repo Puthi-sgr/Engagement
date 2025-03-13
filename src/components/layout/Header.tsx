@@ -38,6 +38,8 @@ export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
         minDuration={1.5}
         maxDuration={5}
       />
+      <div className="absolute inset-8 border-4 border-white/20 z-20" />
+      <div className="absolute inset-7 border border-white/10 z-20" />
       <div className="absolute inset-0 bg-black/20" />
       {/* Sparkle Effects */}
       <motion.div
