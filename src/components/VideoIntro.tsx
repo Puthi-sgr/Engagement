@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import video from "../assets/VideoEntryConfirm.mp4";
+import video from "../assets/AnimatedBorderFlowersFinalized.mp4";
+import "../index.css";
 
 interface VideoIntroProps {
   onComplete: () => void;

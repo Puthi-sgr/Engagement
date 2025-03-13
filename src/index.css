@@ -12,6 +12,14 @@
     transform: translateY(0);
   }
 }
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
 
 html {
   scroll-behavior: smooth;
@@ -19,9 +27,8 @@ html {
 
 body {
   @apply antialiased;
-  overflow-x: hidden;
-  /* Add padding to account for the fixed border */
-  @apply p-[15px] md:p-[20px];
+
+  @apply p-[2px] md:p-[2px];
 }
 
 .animate-fade-in {
@@ -57,7 +64,7 @@ body {
 
 /* Enhanced touch targets for mobile */
 @media (max-width: 768px) {
-  button, 
+  button,
   [role="button"],
   a {
     min-height: 44px;
@@ -80,4 +87,9 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+video {
+  background-color: transparent !important;
+  mix-blend-mode: screen;
 }

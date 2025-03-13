@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
   useScroll,
   useTransform,
@@ -26,6 +26,8 @@ import { AudioControls } from "./components/AudioControls";
 import { DecorativeBorder } from "./components/DecorativeBorder";
 import { VideoIntro } from "./components/VideoIntro";
 import useAudio from "./hooks/useAudio";
+import BodyFrame from "./assets/Bodyframe.jpg";
+import { DecorativeVideoBorder } from "./components/DecorativeVideoBorder";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,62 +37,72 @@ function App() {
   const { scrollYProgress } = useScroll();
   const { isPlaying, isMuted, toggleMute, startAudio } = useAudio();
 
-  const heroScale = useTransform(scrollYProgress, [0, 0.3], [1, 1.1]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const leftColumnY = useTransform(scrollYProgress, [0.3, 0.6], [50, -50]);
-  const rightColumnY = useTransform(scrollYProgress, [0.3, 0.6], [-50, 50]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.3], [1, 2], {
+    clamp: true,
+  });
 
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const leftColumnY = useTransform(scrollYProgress, [0.3, 0.6], [50, -50], {
+    clamp: true,
+  });
+
+  const rightColumnY = useTransform(scrollYProgress, [0.3, 0.6], [-50, 50], {
+    clamp: true,
+  });
+
+  //Memoize handleScroll
+  const handleScroll = useCallback(() => setScrollY(window.scrollY), []);
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     // Simulate loading
     setTimeout(() => setIsLoading(false), 2000);
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [handleScroll]);
 
-  const handleEnter = () => {
+  const handleEnter = useCallback(() => {
     setEntryScreenVisible(false);
     setShowVideo(true);
     startAudio();
-  };
+  }, [startAudio]);
 
   const handleVideoComplete = () => {
     setShowVideo(false);
   };
 
-  if (entryScreenVisible) {
-    return (
-      <>
-        <DecorativeBorder />
-        <EntryScreen onEnter={handleEnter} />
-      </>
-    );
-  }
+  // if (entryScreenVisible) {
+  //   return (
+  //     <>
+  //       <DecorativeBorder />
+  //       <EntryScreen onEnter={handleEnter} />
+  //     </>
+  //   );
+  // }
 
-  if (showVideo) {
-    return <VideoIntro onComplete={handleVideoComplete} />;
-  }
+  // if (showVideo) {
+  //   return <VideoIntro onComplete={handleVideoComplete} />;
+  // }
 
-  if (isLoading) {
-    return (
-      <>
-        <DecorativeBorder />
-        <Loading />
-      </>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <>
+  //       <DecorativeBorder />
+  //       <Loading />
+  //     </>
+  //   );
+  // }
 
   return (
     <AnimatePresence>
       <motion.div
-        className="relative"
+        className="relative bg-cover bg-center bg-fixed bg-repeat-y"
+        style={{ backgroundImage: `url(${BodyFrame})` }}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <DecorativeBorder />
+        {/* <DecorativeBorder /> */}
         <AudioControls isMuted={isMuted} toggleMute={toggleMute} />
         <Header
           scrollY={scrollY}
