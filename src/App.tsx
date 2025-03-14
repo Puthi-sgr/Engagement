@@ -41,12 +41,16 @@ function App() {
     clamp: true,
   });
 
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const leftColumnY = useTransform(scrollYProgress, [0.3, 0.6], [50, -50], {
+  const heroOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.3 /*scroll range*/],
+    [1, 0] /*opacity range*/
+  );
+  const leftColumnY = useTransform(scrollYProgress, [0, 1], [50, 0], {
     clamp: true,
   });
 
-  const rightColumnY = useTransform(scrollYProgress, [0.3, 0.6], [-50, 50], {
+  const rightColumnY = useTransform(scrollYProgress, [0, 1], [-50, 0], {
     clamp: true,
   });
 
@@ -64,7 +68,7 @@ function App() {
   const handleEnter = useCallback(() => {
     setEntryScreenVisible(false);
     setShowVideo(true);
-    startAudio();
+    //startAudio();
   }, [startAudio]);
 
   const handleVideoComplete = () => {
@@ -112,8 +116,8 @@ function App() {
         <FormalRequest />
         {/* <CouplePortrait /> */}
         <InvitationDetails
-          leftColumnY={leftColumnY}
-          rightColumnY={rightColumnY}
+        // leftColumnY={leftColumnY}
+        // rightColumnY={rightColumnY}
         />
         <DateAndVenue
           onAddToCalendar={addToCalendar}

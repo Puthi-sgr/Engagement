@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import useSound from "use-sound";
 import song from "../assets/music.mp3";
 // Background music URL - using a royalty-free music track
-const BACKGROUND_MUSIC_URL = song;
+const BACKGROUND_MUSIC_URL = undefined;
 
 export default function useAudio() {
   const [isPlaying, setIsPlaying] = useState(false);

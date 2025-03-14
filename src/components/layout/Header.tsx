@@ -18,6 +18,9 @@ export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
       style={{ scale: heroScale, opacity: heroOpacity }}
     >
       <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.2 }}
         className="absolute inset-0 "
         style={{
           backgroundImage: `url(${Hero})`,
@@ -57,14 +60,6 @@ export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
           className="text-6xl md:text-8xl mb-6 font-serif "
           style={{ color: "#FFF9C4" }}
         >
-          <SparkleArea
-            density={50}
-            colors={["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFF9C4", "#FFD700"]}
-            minSize={3}
-            maxSize={8}
-            minDuration={1}
-            maxDuration={1}
-          />
           Manith & Pichta
         </h1>
 
