@@ -93,3 +93,9 @@ video {
   background-color: transparent !important;
   mix-blend-mode: screen;
 }
+
+@supports (-webkit-touch-callout: none) {
+  .h-screen {
+    height: -webkit-fill-available;
+  }
+}

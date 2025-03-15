@@ -1,47 +1,29 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Clock, Gift, Camera, Utensils, Music, Heart } from "lucide-react";
+import { Clock, Utensils, Heart, MessageCircleHeart } from "lucide-react";
 
 export function EventTimeline() {
   const timelineEvents = [
     {
-      time: "3:00 PM",
-      title: "Guest Arrival",
-      description: "Welcome drinks and seating",
-      icon: <Clock className="w-6 h-6" />,
+      time: "8:40 AM",
+      title: "ជួបជុំភ្ញៀវកិត្តយស",
+      description: "",
+      icon: <MessageCircleHeart w-6 h-6 />,
     },
     {
-      time: "4:00 PM",
-      title: "Ceremony",
-      description: "Exchange of vows and rings",
+      time: "9:00 AM",
+      title:
+        "ចាស់ទុំលោកមេបា ចាប់ផ្តើមកម្មពិធីចែចូវ បំពាក់ចញ្ចៀន និង គួចដៃបង្កក់សិរី",
+
       icon: <Heart className="w-6 h-6" />,
     },
     {
-      time: "5:00 PM",
-      title: "Cocktail Hour",
-      description: "Hors d'oeuvres and refreshments",
-      icon: <Gift className="w-6 h-6" />,
-    },
-    {
-      time: "6:00 PM",
-      title: "Photo Session",
-      description: "Family and group photos",
-      icon: <Camera className="w-6 h-6" />,
-    },
-    {
-      time: "7:00 PM",
-      title: "Dinner Reception",
-      description: "Formal dinner and toasts",
+      time: "11:00 AM",
+      title: "អញ្ជើញភ្ញៀវកិត្តិយសពិសារអារហារថ្ងៃត្រង់",
+      description: "",
       icon: <Utensils className="w-6 h-6" />,
     },
-    {
-      time: "9:00 PM",
-      title: "Dancing & Celebration",
-      description: "Music and entertainment",
-      icon: <Music className="w-6 h-6" />,
-    },
   ];
-
   return (
     <motion.section
       className="py-24 bg-white relative overflow-hidden"
@@ -89,17 +71,15 @@ export function EventTimeline() {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-16 "
           >
-            <h2 className="text-4xl md:text-5xl font-serif mb-6 text-gray-800">
-              Event Timeline
+            <h2 className="text-4xl md:text-5xl font-serif mb-6 text-gold-600 animate-glow drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+              របៀបវារៈកម្មវិធី
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our special day has been carefully planned to create unforgettable
-              moments. Here's what you can expect.
-            </p>
+            <div className="flex justify-center">
+              <Clock className="h-10 w-10 text-gold-500" />
+            </div>
           </motion.div>
-
           {/* Timeline Ruler */}
           <div className="relative">
             <motion.div
@@ -144,7 +124,7 @@ export function EventTimeline() {
 
                   <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
                     <motion.div
-                      className="w-12 h-12 bg-gold-600 rounded-full flex items-center justify-center text-white z-10"
+                      className="w-12 h-12 bg-gold-600 rounded-full flex items-center justify-center text-white z-10 animate-glow drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]"
                       whileHover={{ scale: 1.2 }}
                       transition={{ duration: 0.3 }}
                     >

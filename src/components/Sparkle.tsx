@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface SparkleProps {
   color?: string;
@@ -7,10 +7,10 @@ interface SparkleProps {
   duration?: number;
 }
 
-export const Sparkle: React.FC<SparkleProps> = ({ 
-  color = '#FFFFFF', 
+export const Sparkle: React.FC<SparkleProps> = ({
+  color = "#FFFFFF",
   size = 8,
-  duration = 1.5
+  duration = 1.5,
 }) => {
   return (
     <motion.svg
@@ -20,12 +20,12 @@ export const Sparkle: React.FC<SparkleProps> = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       initial={{ scale: 0, rotate: 0, opacity: 0 }}
-      animate={{ 
+      animate={{
         scale: [0, 1, 0.8, 0],
         rotate: [0, 90],
-        opacity: [0, 1, 0.8, 0]
+        opacity: [0, 1, 0.8, 0],
       }}
-      transition={{ 
+      transition={{
         duration: duration,
         ease: "easeInOut",
       }}
@@ -49,20 +49,22 @@ interface SparkleAreaProps {
 
 export const SparkleArea: React.FC<SparkleAreaProps> = ({
   density = 30,
-  colors = ['#FFFFFF', '#FFF9C4', '#FFD700', '#FFECB3'],
+  colors = ["#FFFFFF", "#FFF9C4", "#FFD700", "#FFECB3"],
   minSize = 6,
   maxSize = 20,
   minDuration = 1.5,
-  maxDuration = 3.5
+  maxDuration = 3.5,
 }) => {
-  const [sparkles, setSparkles] = useState<Array<{
-    id: string;
-    x: string;
-    y: string;
-    size: number;
-    color: string;
-    duration: number;
-  }>>([]);
+  const [sparkles, setSparkles] = useState<
+    Array<{
+      id: string;
+      x: string;
+      y: string;
+      size: number;
+      color: string;
+      duration: number;
+    }>
+  >([]);
 
   const generateUniqueId = () => {
     return Math.random().toString(36).substring(2, 9);
@@ -87,34 +89,36 @@ export const SparkleArea: React.FC<SparkleAreaProps> = ({
       y: `${Math.random() * 100}%`,
       size: Math.random() * (maxSize - minSize) + minSize,
       color: colors[Math.floor(Math.random() * colors.length)],
-      duration: Math.random() * (maxDuration - minDuration) + minDuration
+      duration: Math.random() * (maxDuration - minDuration) + minDuration,
     }));
 
-    setSparkles(current => [...current, ...newSparkles]);
+    setSparkles((current) => [...current, ...newSparkles]);
 
     // Remove sparkles after they've animated
     setTimeout(() => {
-      setSparkles(current => current.filter(s => !newSparkles.some(ns => ns.id === s.id)));
+      setSparkles((current) =>
+        current.filter((s) => !newSparkles.some((ns) => ns.id === s.id))
+      );
     }, maxDuration * 1000);
   };
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <AnimatePresence>
-        {sparkles.map(sparkle => (
+        {sparkles.map((sparkle) => (
           <div
             key={sparkle.id}
             className="absolute"
             style={{
               left: sparkle.x,
               top: sparkle.y,
-              transform: 'translate(-50%, -50%)'
+              transform: "translate(-50%, -50%)",
             }}
           >
-            <Sparkle 
-              color={sparkle.color} 
-              size={sparkle.size} 
-              duration={sparkle.duration} 
+            <Sparkle
+              color={sparkle.color}
+              size={sparkle.size}
+              duration={sparkle.duration}
             />
           </div>
         ))}

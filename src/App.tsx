@@ -37,15 +37,17 @@ function App() {
   const { scrollYProgress } = useScroll();
   const { isPlaying, isMuted, toggleMute, startAudio } = useAudio();
 
-  const heroScale = useTransform(scrollYProgress, [0, 0.3], [1, 2], {
+  const heroScale = useTransform(scrollYProgress, [0, 0.3], [1.01, 2], {
     clamp: true,
   });
 
   const heroOpacity = useTransform(
     scrollYProgress,
     [0, 0.3 /*scroll range*/],
-    [1, 0] /*opacity range*/
+    [1, 0], // Direct pixel values
+    { clamp: true }
   );
+
   const leftColumnY = useTransform(scrollYProgress, [0, 1], [50, 0], {
     clamp: true,
   });

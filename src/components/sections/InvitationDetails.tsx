@@ -12,7 +12,7 @@ export function InvitationDetails() {
   return (
     <section className="py-12 md:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-1 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1 max-w-7xl mx-auto">
           {/* Groom's Column */}
           <motion.div
             className="text-center relative"
@@ -21,17 +21,10 @@ export function InvitationDetails() {
             transition={{ duration: 0.8 }}
             viewport={{ margin: "-100px" }}
           >
-            <SparkleArea
-              density={25}
-              colors={["#FFD700", "#FDB931", "#F7A54B", "#DAA520", "#B8860B"]}
-              minSize={5}
-              maxSize={15}
-            />
             <h3 className="text-2xl md:text-3xl font-serif mb-4 text-gray-800">
               The Groom
             </h3>
-            <div className="relative w-48 h-56 md:w-80 md:h-80 mx-auto mb-6 bg-transparent rounded-t-[100%] p-4">
-              <div className="absolute inset-0 border-2 border-transparent rounded-t-[100%] m-2"></div>
+            <div className="relative w-96 h-96 md:w-80 md:h-80 mx-auto mb-6 bg-transparent rounded-t-[100%] p-4">
               <img
                 src={groomFrame}
                 alt="Manith"
@@ -44,6 +37,12 @@ export function InvitationDetails() {
             >
               Oum Manith
             </p>
+            <SparkleArea
+              density={25}
+              colors={["#FFD700", "#FDB931", "#F7A54B", "#DAA520", "#B8860B"]}
+              minSize={5}
+              maxSize={15}
+            />
           </motion.div>
 
           {/* Bride's Column */}
@@ -54,21 +53,14 @@ export function InvitationDetails() {
             transition={{ duration: 0.8 }}
             viewport={{ margin: "-100px" }}
           >
-            <SparkleArea
-              density={25}
-              colors={["#FFD700", "#FDB931", "#F7A54B", "#DAA520", "#B8860B"]}
-              minSize={5}
-              maxSize={15}
-            />
             <h3 className="text-2xl md:text-3xl font-serif mb-4 text-gray-800">
               The Bride
             </h3>
-            <div className="relative w-48 h-56 md:w-80 md:h-80 mx-auto mb-6 bg-transparent rounded-t-[100%] p-4">
-              <div className="absolute inset-0 border-2 border-transparent rounded-t-[100%]  m-2"></div>
+            <div className="relative w-96 h-96 md:w-80 md:h-80 mx-auto mb-6 bg-transparent rounded-t-[100%] p-4">
               <img
                 src={brideFrame}
                 alt="Pichta"
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] md:w-[200%] md:h-[200%] object-contain"
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] md:w-[200%] md:h-[200%] object-contain"
               />
             </div>
             <p
@@ -77,6 +69,12 @@ export function InvitationDetails() {
             >
               Mey Srey Pichta
             </p>
+            <SparkleArea
+              density={25}
+              colors={["#FFC0CB", "#FFB6C1", "#FF69B4", "#FFE4E1", "#FFA07A"]}
+              minSize={5}
+              maxSize={15}
+            />
           </motion.div>
         </div>
       </div>
