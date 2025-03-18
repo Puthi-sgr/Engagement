@@ -1,5 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
+import img from "../../assets/Hero.webp";
 
 interface OurStoryProps {
   scrollY: number;
@@ -7,7 +8,7 @@ interface OurStoryProps {
 
 export function OurStory({ scrollY }: OurStoryProps) {
   return (
-    <motion.section 
+    <motion.section
       className="py-24 bg-gold-50 relative"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -16,14 +17,16 @@ export function OurStory({ scrollY }: OurStoryProps) {
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-serif text-center mb-16 text-gray-800">Our Story</h2>
+          <h2 className="text-4xl md:text-5xl font-serif text-center mb-16 text-gray-800">
+            រឿងរបស់ពីអ្នកយើង
+          </h2>
           <div className="grid md:grid-cols-2 gap-12">
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <img 
-                src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              <img
+                src={img}
                 alt="Couple"
                 className="rounded-lg shadow-xl"
                 loading="lazy"
@@ -31,10 +34,13 @@ export function OurStory({ scrollY }: OurStoryProps) {
             </motion.div>
             <div className="flex items-center">
               <p className="text-lg text-gray-700 leading-relaxed">
-                Our journey began five years ago in a small café in Manhattan. 
-                What started as a chance encounter over spilled coffee turned into 
-                countless adventures, shared dreams, and a love that grows stronger 
-                each day. Now, we're ready to begin our greatest adventure yet.
+                យើងបានចាប់ផ្តើមជាមនុស្សស្គាល់គ្នាសាមញ្ញក្នុងពេលយុវវ័យរបស់យើង
+                បន្ទាប់មកបានប្រែក្លាយទៅជាមិត្តភាពដ៏ជ្រាលជ្រៅក្នុងអំឡុងពេលដ៏ពុះពារមួយរបស់កូនកំលោះ។
+                មិនយូរប៉ុន្មានចំណងមិត្តភាពនោះ
+                ក៏ក្លាយជាចំណងស្នេហ៍ដែលបានរីកដុះដាលទៅជាដំណើរផ្សងព្រេងរាប់មិនអស់
+                ក្តីសុបិនរួម និងសេចក្តីស្រឡាញ់ដែលរីកចម្រើនជារៀងរាល់ថ្ងៃ។ ឥឡូវនេះ
+                យើងត្រៀមខ្លួនរួចរាល់
+                ដើម្បីចាប់ផ្តើមជំពូកបន្ទាប់របស់យើង—ជាមួយគ្នា។
               </p>
             </div>
           </div>

@@ -13,10 +13,14 @@ export function VenueInformation() {
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
     >
-      {/* Decorative Elements */}
-
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
+          <motion.div
+            className="flex items-center justify-center mb-8"
+            whileHover={{ scale: 1.1 }}
+          >
+            <MapPin className="w-14 h-14 text-gold-600" />
+          </motion.div>
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -24,7 +28,7 @@ export function VenueInformation() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-serif mb-6 text-gold-800">
+            <h2 className="text-4xl font-bold md:text-5xl font-serif mb-6 text-gold-800">
               ទីតាំងកម្មវិធី
             </h2>
             <p className="text-xl text-gold-700 max-w-3xl mx-auto">
@@ -68,8 +72,11 @@ export function VenueInformation() {
                 </p>
               </motion.div>
             </motion.div>
-
-            {/* Information Tabs */}
+          </div>
+          <div className="flex justify-center items-center mt-12 mb-8">
+            <button className=" text-xl flex items-center gap-2 px-6 py-3 border-2 border-gold-600 text-white bg-gold-600 rounded-full hover:bg-gold-600 hover:text-white transition-colors animate-glow drop-shadow-[0_0_15px_rgba(212,175,55,0.3)] duration-300">
+              ចុចយកទីទាំង
+            </button>
           </div>
         </div>
       </div>

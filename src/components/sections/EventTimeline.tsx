@@ -1,6 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Clock, Utensils, Heart, MessageCircleHeart } from "lucide-react";
+import { DecorativeLine } from "../DecorativeLine";
+import {
+  Clock,
+  Utensils,
+  Heart,
+  MessageCircleHeart,
+  Camera,
+} from "lucide-react";
 
 export function EventTimeline() {
   const timelineEvents = [
@@ -16,6 +23,12 @@ export function EventTimeline() {
         "ចាស់ទុំលោកមេបា ចាប់ផ្តើមកម្មពិធីចែចូវ បំពាក់ចញ្ចៀន និង គួចដៃបង្កក់សិរី",
 
       icon: <Heart className="w-6 h-6" />,
+    },
+    {
+      time: "10:00 AM",
+      title: "ថតរូបអនុស្សាវរីយ៍",
+      description: "",
+      icon: <Camera className="w-6 h-6" />,
     },
     {
       time: "11:00 AM",
@@ -139,15 +152,7 @@ export function EventTimeline() {
           </div>
 
           {/* Decorative Bottom Element */}
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="flex justify-center mt-8"
-          >
-            <div className="h-0.5 w-32 bg-gold-400 mx-auto" />
-          </motion.div>
+          <DecorativeLine />
         </div>
       </div>
     </motion.section>

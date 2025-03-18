@@ -47,7 +47,6 @@ export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
         className="absolute inset-0 "
         style={{
           backgroundImage: `url(${Hero})`,
-
           backgroundPosition: "53% center",
           backgroundSize: "cover",
 

@@ -39,7 +39,7 @@ export function InvitationDetails() {
             </p>
             <SparkleArea
               density={25}
-              colors={["#FFD700", "#FDB931", "#F7A54B", "#DAA520", "#B8860B"]}
+              colors={["#1E90FF", "#4169E1", "#0000FF", "#000080", "#87CEEB"]}
               minSize={5}
               maxSize={15}
             />
@@ -71,7 +71,7 @@ export function InvitationDetails() {
             </p>
             <SparkleArea
               density={25}
-              colors={["#FFC0CB", "#FFB6C1", "#FF69B4", "#FFE4E1", "#FFA07A"]}
+              colors={["#FF1493", "#FF69B4", "#FF007F", "#FFB6C1", "#FF4D6B"]}
               minSize={5}
               maxSize={15}
             />

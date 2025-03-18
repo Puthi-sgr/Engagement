@@ -3,14 +3,18 @@ import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import { SparkleArea } from "../Sparkle";
 import { Mail } from "lucide-react";
-
-export function FormalRequest() {
+import { Calendar, Share2 } from "lucide-react";
+interface DateAndVenueProps {
+  onAddToCalendar: () => void;
+  onShare: () => void;
+}
+export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
   return (
     <motion.section
       className="py-32 bg-transparent relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.2, delay: 0 }}
       viewport={{ margin: "-100px" }}
     >
       <div className="container mx-auto px-4">
@@ -18,7 +22,7 @@ export function FormalRequest() {
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.2, delay: 0 }}
             viewport={{ margin: "-100px" }}
             className="mb-12"
           >
@@ -28,7 +32,7 @@ export function FormalRequest() {
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.2, delay: 0 }}
             viewport={{ margin: "-100px" }}
             className="mb-12"
           >
@@ -42,10 +46,33 @@ export function FormalRequest() {
               ចូលរួមក្នុងកម្មវិធីភ្ជាប់ពាក្យយើងទាំងពីរ ដែលប្រារព្ធឡើងនៅ
             </p>
 
-            <h3 className="text-2xl font-serif text-gold-600 mt-8">
+            <motion.div
+              className="flex items-center justify-center mt-10 mb-8"
+              whileHover={{ scale: 1.1 }}
+            >
+              <Calendar className="w-8 h-8 text-gold-500" />
+            </motion.div>
+            <h3 className="text-2xl font-bold font-serif text-gold-600 mt-8">
               ថ្ងៃទី៣១ <span className="mx-2">||</span> ខែឧសភា{" "}
               <span className="mx-2 font-bold">||</span> ឆ្នាំ២០២៥
             </h3>
+
+            <div className="flex items-center justify-center gap-8 mt-8 mb-8">
+              <button
+                onClick={onAddToCalendar}
+                className="flex items-center gap-2 px-6 py-3 bg-gold-600 text-white rounded-full hover:bg-gold-700 transition-colors duration-300"
+              >
+                <Calendar className="w-5 h-5" />
+                Add to Calendar
+              </button>
+              <button
+                onClick={onShare}
+                className="flex items-center gap-2 px-6 py-3 border-2 border-gold-600 text-gold-600 rounded-full hover:bg-gold-600 hover:text-white transition-colors duration-300"
+              >
+                <Share2 className="w-5 h-5" />
+                Share
+              </button>
+            </div>
           </motion.div>
 
           <motion.div

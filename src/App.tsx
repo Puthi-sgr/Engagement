@@ -17,7 +17,6 @@ import { VenueInformation } from "./components/sections/VenueInformation";
 import { PhotoGallery } from "./components/sections/PhotoGallery";
 import { OurStory } from "./components/sections/OurStory";
 import { RSVP } from "./components/sections/RSVP";
-import { AdditionalDetails } from "./components/sections/AdditionalDetails";
 import { GiftRegistry } from "./components/sections/GiftRegistry";
 import { addToCalendar } from "./utils/calendar";
 import { shareInvitation } from "./utils/share";
@@ -115,23 +114,23 @@ function App() {
           heroScale={heroScale}
           heroOpacity={heroOpacity}
         />
-        <FormalRequest />
+        <FormalRequest
+          onAddToCalendar={addToCalendar}
+          onShare={shareInvitation}
+        />
         {/* <CouplePortrait /> */}
         <InvitationDetails
         // leftColumnY={leftColumnY}
         // rightColumnY={rightColumnY}
         />
-        <DateAndVenue
-          onAddToCalendar={addToCalendar}
-          onShare={shareInvitation}
-        />
+
         <EventTimeline />
         <VenueInformation />
         <PhotoGallery />
         <OurStory scrollY={scrollY} />
-        <RSVP />
+        {/* <RSVP /> */}
         <GiftRegistry />
-        <AdditionalDetails />
+
         <Footer onShare={shareInvitation} />
       </motion.div>
     </AnimatePresence>
