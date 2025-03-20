@@ -17,8 +17,8 @@ export function OurStory({ scrollY }: OurStoryProps) {
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-serif text-center mb-16 text-gray-800">
-            រឿងរបស់ពីអ្នកយើង
+          <h2 className="text-4xl md:text-5xl font-serif text-center mb-16 bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-500 bg-clip-text text-transparent py-1">
+            ពីដំបូងឡើយ......
           </h2>
           <div className="grid md:grid-cols-2 gap-12">
             <motion.div
@@ -33,14 +33,15 @@ export function OurStory({ scrollY }: OurStoryProps) {
               />
             </motion.div>
             <div className="flex items-center">
-              <p className="text-lg text-gray-700 leading-relaxed">
-                យើងបានចាប់ផ្តើមជាមនុស្សស្គាល់គ្នាសាមញ្ញក្នុងពេលយុវវ័យរបស់យើង
-                បន្ទាប់មកបានប្រែក្លាយទៅជាមិត្តភាពដ៏ជ្រាលជ្រៅក្នុងអំឡុងពេលដ៏ពុះពារមួយរបស់កូនកំលោះ។
-                មិនយូរប៉ុន្មានចំណងមិត្តភាពនោះ
-                ក៏ក្លាយជាចំណងស្នេហ៍ដែលបានរីកដុះដាលទៅជាដំណើរផ្សងព្រេងរាប់មិនអស់
-                ក្តីសុបិនរួម និងសេចក្តីស្រឡាញ់ដែលរីកចម្រើនជារៀងរាល់ថ្ងៃ។ ឥឡូវនេះ
-                យើងត្រៀមខ្លួនរួចរាល់
-                ដើម្បីចាប់ផ្តើមជំពូកបន្ទាប់របស់យើង—ជាមួយគ្នា។
+              <p className="text-lg leading-relaxed bg-gradient-to-br from-amber-800 via-yellow-700 to-amber-600 bg-clip-text text-transparent">
+                យើងបានស្គាល់គ្នាក្នុងវ័យសិក្សា បន្ទាប់មកដោយភាពចៃដន្យ
+                ក៏បានប្រែក្លាយទៅជាមិត្តភាពដ៏ជ្រាលជ្រៅ។
+                ដោយមាននិស្ស័យហើយប្រហែលជាយើងបានសាងបុណ្យរួមគ្នាពីជាតិមុន
+                ទើបចំណងមិត្តភាពនោះបានក្លាយជាចំណងស្នេហ៍
+                ហើយបានរីកដុះដាលទៅជាដំណើរផ្សងព្រេងរាប់មិនអស់ ក្តីសុបិន្តដ៏ច្រើន
+                និង​​ ក្តីស្រឡាញ់ដែលរីកចម្រើនចំពោះគ្នាជារៀងរាល់ថ្ងៃ។ ឥឡូវនេះ
+                យើងបានត្រៀមខ្លួនរួចរាល់ហើយ
+                ដើម្បីចាប់ផ្តើមជំពូកបន្ទាប់របស់យើង—ជាមួយគ្នា 🤍
               </p>
             </div>
           </div>

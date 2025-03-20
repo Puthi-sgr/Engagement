@@ -20,7 +20,7 @@ export function EventTimeline() {
     {
       time: "9:00 AM",
       title:
-        "ចាស់ទុំលោកមេបា ចាប់ផ្តើមកម្មពិធីចែចូវ បំពាក់ចញ្ចៀន និង គួចដៃបង្កក់សិរី",
+        "ចាស់ទុំលោកមេបា ចាប់ផ្តើមពិធីចែចូវ បំពាក់ចញ្ចៀន និង គួចដៃបង្កក់សិរី",
 
       icon: <Heart className="w-6 h-6" />,
     },
@@ -39,44 +39,12 @@ export function EventTimeline() {
   ];
   return (
     <motion.section
-      className="py-24 bg-white relative overflow-hidden"
+      className="pt-12  bg-gray relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
     >
-      {/* Decorative Elements */}
-      {/* <motion.div 
-        className="absolute top-20 right-10 w-32 h-32 opacity-10"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54 0h6v6h-6zM0 54h6v6H0z' fill='%23D4AF37' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-        }}
-        animate={{
-          y: [0, 15, 0],
-          rotate: [0, 10, 0]
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div 
-        className="absolute bottom-20 left-10 w-32 h-32 opacity-10"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54 0h6v6h-6zM0 54h6v6H0z' fill='%23D4AF37' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-        }}
-        animate={{
-          y: [0, -15, 0],
-          rotate: [0, -10, 0]
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      /> */}
-
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -125,13 +93,13 @@ export function EventTimeline() {
                       whileHover={{ y: -5 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <h3 className="text-2xl font-serif text-gold-600 mb-2">
+                      <h3 className="text-2xl font-serif text-gold-400 mb-2">
                         {event.time}
                       </h3>
-                      <h4 className="text-xl font-medium text-gray-800 mb-2">
+                      <h4 className="text-xl font-medium text-gold-500 mb-2">
                         {event.title}
                       </h4>
-                      <p className="text-gray-600">{event.description}</p>
+                      <p className="text-gold-300">{event.description}</p>
                     </motion.div>
                   </div>
 

@@ -7,7 +7,7 @@ export function VenueInformation() {
 
   return (
     <motion.section
-      className="py-24 bg-gold-50 relative overflow-hidden"
+      className="pt-12 bg-gold-50 relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -75,7 +75,12 @@ export function VenueInformation() {
           </div>
           <div className="flex justify-center items-center mt-12 mb-8">
             <button className=" text-xl flex items-center gap-2 px-6 py-3 border-2 border-gold-600 text-white bg-gold-600 rounded-full hover:bg-gold-600 hover:text-white transition-colors animate-glow drop-shadow-[0_0_15px_rgba(212,175,55,0.3)] duration-300">
-              ចុចយកទីទាំង
+              <a
+                href="https://maps.app.goo.gl/h7maZeZ4k4aGWibDA"
+                target="_blank"
+              >
+                ចុចមើលទីតាំង
+              </a>
             </button>
           </div>
         </div>

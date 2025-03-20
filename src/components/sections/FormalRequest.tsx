@@ -11,7 +11,7 @@ interface DateAndVenueProps {
 export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
   return (
     <motion.section
-      className="py-32 bg-transparent relative overflow-hidden"
+      className="pt-32 bg-transparent relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.2, delay: 0 }}
@@ -36,14 +36,14 @@ export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
             viewport={{ margin: "-100px" }}
             className="mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-serif mb-6 text-gray-800">
+            <h2 className="text-4xl md:text-5xl font-serif mb-6 text-gold-800">
               សូមគោរពអញ្ជើញ
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              យើងខ្ញុំមានកិត្តិយសសូមគោរពអញ្ជើញវត្តមាន
+            <p className="text-xl text-gold-700 leading-relaxed">
+              ខ្ញុំបាទ និង នាងខ្ញុំមានកិត្តិយសសូមគោរពអញ្ជើញវត្តមាន
               <br />
-              ដ៏ថ្លៃថ្លារបស់លោកអ្នកជាទីស្រលាញ់
-              ចូលរួមក្នុងកម្មវិធីភ្ជាប់ពាក្យយើងទាំងពីរ ដែលប្រារព្ធឡើងនៅ
+              ដ៏ថ្លៃថ្លារបស់លោក លោកស្រីជាទីស្រលាញ់
+              ចូលរួមក្នុងកម្មវិធីភ្ជាប់ពាក្យរបស់ពួកយើងទាំងពីរ នៅ
             </p>
 
             <motion.div

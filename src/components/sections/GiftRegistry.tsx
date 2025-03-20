@@ -55,7 +55,7 @@ export function GiftRegistry() {
 
   return (
     <motion.section
-      className="py-24 bg-gold-100 relative overflow-hidden"
+      className="pt-2 pb-4 bg-gold-100 relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -67,7 +67,7 @@ export function GiftRegistry() {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-5"
         >
           <div className="flex justify-center mb-6">
             <motion.div
@@ -77,12 +77,26 @@ export function GiftRegistry() {
               <Gift className="w-12 h-12 text-gold-600" />
             </motion.div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-serif mb-6 text-gray-800">
-            ចំណងដៃ
+          <h2 className="text-xl md:text-xl font-serif mb-2 text-gold-600">
+            ជូនចំពោះលោកលោកស្រីជាទីស្រលាញ់ុ
+            <br />
+            ដែលមានបំណងបង្ហាញក្តីស្រលាញ់មកកាន់ពួកយើងទាំងពីរដោយការផ្តល់អំណោយ
           </h2>
         </motion.div>
+        <motion.div className="flex justify-center">
+          <motion.button
+            className="px-6 py-3 bg-gold-500 text-white rounded-full flex items-center gap-2"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Heart className="w-5 h-5" />
+            <a href="https://pay.ababank.com/3VS2mn6WyPpT9RQH6" target="_blank">
+              ផ្តល់កាដូ
+            </a>
+          </motion.button>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mt-3">
           {/* QR Code Display */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -176,20 +190,6 @@ export function GiftRegistry() {
                 }}
               />
             </motion.div>
-
-            <motion.button
-              className="px-6 py-3 bg-gold-500 text-white rounded-full flex items-center gap-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Heart className="w-5 h-5" />
-              <a
-                href="https://pay.ababank.com/3VS2mn6WyPpT9RQH6"
-                target="_blank"
-              >
-                ផ្តល់កាដូ
-              </a>
-            </motion.button>
 
             {/* Thank You Animation */}
             <AnimatePresence>

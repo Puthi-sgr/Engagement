@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import groomFrame from "../../assets/groom.png";
 import brideFrame from "../../assets/bride.png";
 import { SparkleArea } from "../Sparkle";
+import { Heart } from "lucide-react";
 interface InvitationDetailsProps {
   leftColumnY: any;
   rightColumnY: any;
@@ -10,7 +11,7 @@ interface InvitationDetailsProps {
 
 export function InvitationDetails() {
   return (
-    <section className="py-12 md:py-24 bg-white overflow-hidden">
+    <section className="pt-12 md:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-1 max-w-7xl mx-auto">
           {/* Groom's Column */}
@@ -21,9 +22,6 @@ export function InvitationDetails() {
             transition={{ duration: 0.8 }}
             viewport={{ margin: "-100px" }}
           >
-            <h3 className="text-2xl md:text-3xl font-serif mb-4 text-gray-800">
-              The Groom
-            </h3>
             <div className="relative w-96 h-96 md:w-80 md:h-80 mx-auto mb-6 bg-transparent rounded-t-[100%] p-4">
               <img
                 src={groomFrame}
@@ -31,20 +29,22 @@ export function InvitationDetails() {
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  w-[200%] h-[200%]  md:w-[200%] md:h-[200%] object-contain"
               />
             </div>
-            <p
-              className="text-lg md:text-xl mb-2 text-gray-700 font-serif"
-              style={{ color: "#FFF9C4" }}
-            >
-              Oum Manith
-            </p>
+            <h3 className="text-3xl md:text-3xl font-serif mb-4 text-gold-600">
+              អ៊ុំ ម៉ាណិត
+            </h3>
+            <Heart className="bg-transparent flex items-center justify-center">
+              <p className="text-lg md:text-xl mb-2 text-gold-800 font-serif absolute">
+                ជាគូ​នឺង
+              </p>
+            </Heart>
+
             <SparkleArea
               density={25}
-              colors={["#1E90FF", "#4169E1", "#0000FF", "#000080", "#87CEEB"]}
+              colors={["#FFD700", "#FDB931", "#DAA520", "#B8860B", "#996515"]}
               minSize={5}
               maxSize={15}
             />
           </motion.div>
-
           {/* Bride's Column */}
           <motion.div
             className="text-center relative"
@@ -53,9 +53,9 @@ export function InvitationDetails() {
             transition={{ duration: 0.8 }}
             viewport={{ margin: "-100px" }}
           >
-            <h3 className="text-2xl md:text-3xl font-serif mb-4 text-gray-800">
-              The Bride
-            </h3>
+            <h3 className="text-[1.75rem] md:text-3xl font-serif mb-4  text-gold-600">
+              មុី ស្រីពេជ្ជតា
+            </h3>{" "}
             <div className="relative w-96 h-96 md:w-80 md:h-80 mx-auto mb-6 bg-transparent rounded-t-[100%] p-4">
               <img
                 src={brideFrame}
@@ -63,12 +63,6 @@ export function InvitationDetails() {
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] md:w-[200%] md:h-[200%] object-contain"
               />
             </div>
-            <p
-              className="text-lg md:text-xl mb-2 text-gray-700 font-serif"
-              style={{ color: "#FFF9C4" }}
-            >
-              Mey Srey Pichta
-            </p>
             <SparkleArea
               density={25}
               colors={["#FF1493", "#FF69B4", "#FF007F", "#FFB6C1", "#FF4D6B"]}

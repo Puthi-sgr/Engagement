@@ -9,7 +9,7 @@ export const DecorativeLine = () => {
       whileInView={{ scale: 1 }}
       transition={{ duration: 0.8, delay: 0.1 }}
       viewport={{ once: false }}
-      className="flex justify-center items-center mt-8 w-48 h-48 mx-auto"
+      className="flex justify-center items-center mt-0 w-64 h-64 mx-auto"
     >
       <img src={DecorativeLineImage} alt="line" />
     </motion.div>
