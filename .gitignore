@@ -23,3 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 .qodo
+
+#Media files
+/src/assets/video/*.mp4
+/src/assets/audio/*.mp3
+
+#production 
+/build
+/dist

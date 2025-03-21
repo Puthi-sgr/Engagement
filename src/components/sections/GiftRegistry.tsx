@@ -9,7 +9,7 @@ import {
   DollarSign,
   Heart,
 } from "lucide-react";
-import QR from "../../assets/QR.png";
+import QR from "../../assets/images/QR.png";
 interface BankOption {
   id: string;
   name: string;

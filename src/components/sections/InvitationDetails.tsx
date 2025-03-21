@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import groomFrame from "../../assets/groom.png";
-import brideFrame from "../../assets/bride.png";
+import groomFrame from "../../assets/images/groom.png";
+import brideFrame from "../../assets/images/bride.png";
 import { SparkleArea } from "../Sparkle";
 import { Heart } from "lucide-react";
 interface InvitationDetailsProps {

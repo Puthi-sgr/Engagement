@@ -22,11 +22,11 @@ import { addToCalendar } from "./utils/calendar";
 import { shareInvitation } from "./utils/share";
 import { EntryScreen } from "./components/EntryScreen";
 import { AudioControls } from "./components/AudioControls";
-import { DecorativeBorder } from "./components/DecorativeBorder";
+import { DecorativeBorder } from "./components/decorativeComponents/DecorativeBorder";
 import { VideoIntro } from "./components/VideoIntro";
 import useAudio from "./hooks/useAudio";
-import BodyFrame from "./assets/Bodyframe.jpg";
-import { DecorativeVideoBorder } from "./components/DecorativeVideoBorder";
+import BodyFrame from "./assets/images/Bodyframe.jpg";
+import { DecorativeVideoBorder } from "./components/decorativeComponents/DecorativeVideoBorder";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -106,8 +106,7 @@ function App() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-      >zx
-        {/* <DecorativeBorder /> */}
+      >
         <AudioControls isMuted={isMuted} toggleMute={toggleMute} />
         <Header
           scrollY={scrollY}
@@ -123,15 +122,14 @@ function App() {
         // leftColumnY={leftColumnY}
         // rightColumnY={rightColumnY}
         />
-
         <EventTimeline />
         <VenueInformation />
         <PhotoGallery />
         <OurStory scrollY={scrollY} />
         {/* <RSVP /> */}
         <GiftRegistry />
-
         <Footer onShare={shareInvitation} />
+       
       </motion.div>
     </AnimatePresence>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import img from "../../assets/Hero.webp";
+import img from "../../assets/images/Hero.webp";
 
 interface OurStoryProps {
   scrollY: number;

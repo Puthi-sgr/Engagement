@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { DecorativeLine } from "../DecorativeLine";
+import { DecorativeLine } from "../decorativeComponents/DecorativeLine";
+import flower from "../../assets/decorator/20.png";
 import {
   Clock,
   Utensils,
@@ -8,6 +9,7 @@ import {
   MessageCircleHeart,
   Camera,
 } from "lucide-react";
+import DecorativeElementContainer from "../decorativeComponents/DecorativeElementContainer";
 
 export function EventTimeline() {
   const timelineEvents = [
@@ -120,7 +122,9 @@ export function EventTimeline() {
           </div>
 
           {/* Decorative Bottom Element */}
-          <DecorativeLine />
+          <div className="flex justify-center">
+            <DecorativeLine />
+          </div>
         </div>
       </div>
     </motion.section>

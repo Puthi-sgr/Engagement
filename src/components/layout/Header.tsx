@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import { SparkleArea } from "../Sparkle";
-import MP from "../../assets/InitialRemovedBG.png";
-import Hero from "../../assets/Hero.webp";
+import MP from "../../assets/images/InitialRemovedBG.png";
+import Hero from "../../assets/images/Hero.webp";
 import { MotionValue } from "framer-motion";
+import { BackgroundOverlay } from "../decorativeComponents/BackgroundOverlay";
 
 interface HeaderProps {
   scrollY: number;
@@ -80,6 +81,8 @@ export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
           <Heart className="inline-block text-gold-400 w-8 h-8" />
         </div>
       </motion.div>
+      <BackgroundOverlay />
+      <SparkleArea />
     </motion.section>
   );
 }
