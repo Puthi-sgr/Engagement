@@ -129,7 +129,6 @@ function App() {
         {/* <RSVP /> */}
         <GiftRegistry />
         <Footer onShare={shareInvitation} />
-       
       </motion.div>
     </AnimatePresence>
   );

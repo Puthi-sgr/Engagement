@@ -2,6 +2,7 @@ import React from "react";
 import { Photo } from "./sections/PhotoGallery";
 import { motion } from "framer-motion";
 import { ChevronRight, ChevronLeft, X } from "lucide-react";
+import { useScrollLock } from "../hooks/useScrollLock";
 
 interface ModalView {
   setSelectedPhoto: (photo: Photo | null) => void;
@@ -38,10 +39,10 @@ export const PhotoZoomModalView = ({
     }
   };
 
-  console.log(photos[0]);
+  useScrollLock(true);
   return (
     <motion.div
-      className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

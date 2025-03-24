@@ -13,7 +13,7 @@ export const BackgroundOverlay = ({
   return (
     <div>
       <div
-        className={`absolute inset-0 bg-gradient-to-r from-${initialColor}-200/10  via-${middleColor}   to-${endColor}-200/20`}
+        className={`absolute inset-0 bg-gradient-to-r from-${initialColor}-200/20  via-${middleColor}   to-${endColor}-200/20`}
       />
       <div
         className={`absolute inset-0 bg-gradient-to-b from-${initialColor}/20 via-${middleColor} to-${endColor}/20`}

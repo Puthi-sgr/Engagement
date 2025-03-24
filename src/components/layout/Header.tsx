@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useId, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import { SparkleArea } from "../Sparkle";
@@ -6,6 +7,7 @@ import MP from "../../assets/images/InitialRemovedBG.png";
 import Hero from "../../assets/images/Hero.webp";
 import { MotionValue } from "framer-motion";
 import { BackgroundOverlay } from "../decorativeComponents/BackgroundOverlay";
+import { once } from "events";
 
 interface HeaderProps {
   scrollY: number;
@@ -15,6 +17,12 @@ interface HeaderProps {
 
 export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
   const [viewportHeight, setViewportHeight] = useState("101vh"); //initial state for header
+
+  const { ref, inView } = useInView({
+    threshold: 0.05, // if 50% of the element is in view
+
+    triggerOnce: false,
+  });
 
   //This effect function handles the quirks of browsers in mobile phone
   useEffect(() => {
@@ -34,6 +42,7 @@ export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
 
   return (
     <motion.section
+      ref={ref}
       className="relative0 h-screen flex items-center justify-center overflow-hidden"
       style={{
         height: viewportHeight,
@@ -58,7 +67,6 @@ export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
       <div className="absolute inset-8 border-4 border-white/20 z-20" />
       <div className="absolute inset-7 border border-white/10 z-20" />
       <div className="absolute inset-0 bg-black/20" />
-      {/* Sparkle Effects */}
       <motion.div
         className="relative z-20 text-center  text-white"
         initial={{ opacity: 0, y: 20 }}
@@ -70,6 +78,7 @@ export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
           alt="Logo"
           className="w-32 md:w-48 mx-auto mb-4" // Add width classes and margin
         />
+
         <h1
           className="text-6xl md:text-8xl mb-6 font-serif "
           style={{ color: "#FFF9C4" }}
@@ -81,8 +90,41 @@ export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
           <Heart className="inline-block text-gold-400 w-8 h-8" />
         </div>
       </motion.div>
-      <BackgroundOverlay />
-      <SparkleArea />
+      <BackgroundOverlay
+        initialColor="gold"
+        middleColor="transparent"
+        endColor="gold"
+      />
+      {inView && (
+        <SparkleArea
+          density={60}
+          maxDuration={2}
+          minDuration={1}
+          maxSize={10}
+          colors={[
+            "#FFFFFF",
+            "#FAFAFA",
+            "#F5F5F5",
+            "#FFFAFA",
+            "#F0F8FF",
+            "#F8F8FF",
+            "#FFFFF0",
+            "#FFFAF0",
+            "#FFF5EE",
+            "#FFFAFA",
+            "#F0FFFF",
+            "#FFFFFF",
+            "#FEFEFE",
+            "#FDFDFD",
+            "#FCFCFC",
+            "#FFE4E1",
+            "#FFF0F5",
+            "#FFFFFF",
+            "#F8F8FF",
+            "#FFFFF0",
+          ]}
+        />
+      )}
     </motion.section>
   );
 }
