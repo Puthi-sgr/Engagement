@@ -262,16 +262,17 @@ export function PhotoGallery() {
           </div>
         )}
       </motion.div>
-
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 pt-6">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16 text-center"
+          className="text-center mb-16"
         >
-          <Camera />
+          <div className="flex justify-center mb-4">
+            <Camera className="w-12 h-12 text-gold-600" />
+          </div>
           <h2 className="text-3xl md:text-2xl font-serif mb-6 text-gold-800">
             កម្រងរូបភាពអនុស្សាវរីយ៍
           </h2>

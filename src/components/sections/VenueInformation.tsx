@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Navigation, Car, Hotel, Plane } from "lucide-react";
+import button from "../../assets/decorativeButtons/12.png";
+import DecorativeElementContainer from "../decorativeComponents/DecorativeElementContainer";
 
 export function VenueInformation() {
   const [activeTab, setActiveTab] = useState("directions");
@@ -73,15 +75,25 @@ export function VenueInformation() {
               </motion.div>
             </motion.div>
           </div>
-          <div className="flex justify-center items-center mt-12 mb-8">
-            <button className=" text-xl flex items-center gap-2 px-6 py-3 border-2 border-gold-600 text-white bg-gold-600 rounded-full hover:bg-gold-600 hover:text-white transition-colors animate-glow drop-shadow-[0_0_15px_rgba(212,175,55,0.3)] duration-300">
+          <div className="h-24 flex justify-center items-center mt-12 mb-8">
+            <motion.div
+              className="absolute"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              animate={{ scale: [1, 1.02, 1] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
               <a
                 href="https://maps.app.goo.gl/h7maZeZ4k4aGWibDA"
                 target="_blank"
               >
-                ចុចមើលទីតាំង
+                <DecorativeElementContainer img={button} size={250} />
               </a>
-            </button>
+            </motion.div>
           </div>
         </div>
       </div>

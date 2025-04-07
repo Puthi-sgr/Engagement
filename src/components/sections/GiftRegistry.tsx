@@ -10,6 +10,9 @@ import {
   Heart,
 } from "lucide-react";
 import QR from "../../assets/images/QR.png";
+import { DecorativeBorder } from "../decorativeComponents/DecorativeBorder";
+import DecorativeElementContainer from "../decorativeComponents/DecorativeElementContainer";
+import button from "../../assets/decorativeButtons/12.png";
 interface BankOption {
   id: string;
   name: string;
@@ -61,15 +64,15 @@ export function GiftRegistry() {
       transition={{ duration: 0.8 }}
       viewport={{ once: true, margin: "-100px" }}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 pt-12">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-5"
+          className="text-center mb-16"
         >
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-4">
             <motion.div
               whileHover={{ rotate: 15, scale: 1.1 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -77,25 +80,29 @@ export function GiftRegistry() {
               <Gift className="w-12 h-12 text-gold-600" />
             </motion.div>
           </div>
-          <h2 className="text-xl md:text-xl font-serif mb-2 text-gold-600">
+          <h2 className="text-xl md:text-xl font-serif mb-4 text-gold-600">
             ជូនចំពោះលោកលោកស្រីជាទីស្រលាញ់ុ
             <br />
             ដែលមានបំណងបង្ហាញក្តីស្រលាញ់មកកាន់ពួកយើងទាំងពីរដោយការផ្តល់អំណោយ
           </h2>
         </motion.div>
-        <motion.div className="flex justify-center">
-          <motion.button
-            className="px-6 py-3 bg-gold-500 text-white rounded-full flex items-center gap-2"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+        <motion.div className="flex justify-center -mt-4">
+          <motion.div
+            className="-mt-16"
+            animate={{
+              scale: [1, 1.02, 1],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
           >
-            <Heart className="w-5 h-5" />
             <a href="https://pay.ababank.com/3VS2mn6WyPpT9RQH6" target="_blank">
-              ផ្តល់កាដូ
+              <DecorativeElementContainer img={button} size={250} />
             </a>
-          </motion.button>
+          </motion.div>
         </motion.div>
-
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mt-3">
           {/* QR Code Display */}
           <motion.div
@@ -105,16 +112,16 @@ export function GiftRegistry() {
             viewport={{ once: true }}
             className="flex flex-col items-center justify-center"
           >
-            <motion.div
+            {/* <motion.div
               className="relative w-64 h-64 mb-8"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               {/* Decorative Frame */}
-              <div className="absolute inset-0 border-2 border-gold-300 rounded-lg m-2"></div>
+            {/* <div className="absolute inset-0 border-2 border-gold-300 rounded-lg m-2"></div> */}
 
-              {/* QR Code */}
-              <a
+            {/* QR Code */}
+            {/* <a
                 href="https://pay.ababank.com/3VS2mn6WyPpT9RQH6"
                 target="_blank"
               >
@@ -138,10 +145,10 @@ export function GiftRegistry() {
                     />
                   </motion.div>
                 </div>
-              </a>
+              </a> */}
 
-              {/* Animated Corners */}
-              <motion.div
+            {/* Animated Corners */}
+            {/* <motion.div
                 className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2  border-gold-600"
                 animate={{
                   x: [0, 5, 0],
@@ -188,8 +195,8 @@ export function GiftRegistry() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-              />
-            </motion.div>
+              /> */}
+            {/* </motion.div> */}
 
             {/* Thank You Animation */}
             <AnimatePresence>

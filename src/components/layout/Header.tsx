@@ -76,16 +76,15 @@ export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
         <img
           src={MP}
           alt="Logo"
-          className="w-32 md:w-48 mx-auto mb-4" // Add width classes and margin
+          className="w-56 md:w-48 mx-auto mb-4" // Add width classes and margin
         />
 
         <h1
-          className="text-6xl md:text-8xl mb-6 font-serif "
+          className="text-6xl sm:text-3xl md:text-2xl lg:text-6xl xl:text-6xl mb-6 font-serif whitespace-nowrap"
           style={{ color: "#FFF9C4" }}
         >
           Manith & Pichta
         </h1>
-
         <div className="mt-8">
           <Heart className="inline-block text-gold-400 w-8 h-8" />
         </div>
@@ -97,7 +96,7 @@ export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
       />
       {inView && (
         <SparkleArea
-          density={60}
+          density={40}
           maxDuration={2}
           minDuration={1}
           maxSize={10}

@@ -76,8 +76,8 @@ export const SparkleArea: React.FC<SparkleAreaProps> = ({
 
     // Create new sparkles periodically
     const interval = setInterval(() => {
-      generateSparkles(Math.floor(density / 5));
-    }, 500);
+      generateSparkles(Math.floor(density));
+    }, 600);
 
     return () => clearInterval(interval);
   }, []);

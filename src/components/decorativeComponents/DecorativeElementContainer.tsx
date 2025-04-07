@@ -13,11 +13,11 @@ const DecorativeElementContainer = ({ img, size = 64 }: DecorativeElement) => {
       whileInView={{ scale: 1 }}
       transition={{ duration: 0.8, delay: 0.1 }}
       viewport={{ once: false }}
-      className={`mt-0 w-${size} h-${size}`}
+      className="mt-0"
+      style={{ width: size, height: size }}
     >
-      <img src={img} alt="line" />
+      <img src={img} alt="line" className="w-full h-full object-contain" />
     </motion.div>
   );
 };
-
 export default DecorativeElementContainer;
