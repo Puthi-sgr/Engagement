@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import video from "../assets/AnimatedBorderFlowersFinalized.mp4";
+import video from "../assets/video/intro.mp4";
 import "../index.css";
 
 interface VideoIntroProps {
@@ -12,7 +12,7 @@ export function VideoIntro({ onComplete }: VideoIntroProps) {
     // Auto-complete after video duration (8 seconds)
     const timer = setTimeout(() => {
       onComplete();
-    }, 10000);
+    }, 12000);
 
     return () => clearTimeout(timer);
   }, [onComplete]);

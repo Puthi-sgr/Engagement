@@ -76,27 +76,27 @@ function App() {
     setShowVideo(false);
   };
 
-  // if (entryScreenVisible) {
-  //   return (
-  //     <>
-  //       <DecorativeBorder />
-  //       <EntryScreen onEnter={handleEnter} />
-  //     </>
-  //   );
-  // }
+  if (entryScreenVisible) {
+    return (
+      <>
+        {/* <DecorativeBorder /> */}
+        <EntryScreen onEnter={handleEnter} />
+      </>
+    );
+  }
 
-  // if (showVideo) {
-  //   return <VideoIntro onComplete={handleVideoComplete} />;
-  // }
+  if (showVideo) {
+    return <VideoIntro onComplete={handleVideoComplete} />;
+  }
 
-  // if (isLoading) {
-  //   return (
-  //     <>
-  //       <DecorativeBorder />
-  //       <Loading />
-  //     </>
-  //   );
-  // }
+  if (isLoading) {
+    return (
+      <>
+        <DecorativeBorder />
+        <Loading />
+      </>
+    );
+  }
 
   return (
     <AnimatePresence>
