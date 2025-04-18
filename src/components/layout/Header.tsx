@@ -16,7 +16,7 @@ interface HeaderProps {
 }
 
 export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
-  const [viewportHeight, setViewportHeight] = useState("101vh"); //initial state for header
+  const [viewportHeight, setViewportHeight] = useState("100vh"); //initial state for header
 
   const { ref, inView } = useInView({
     threshold: 0.05, // if 50% of the element is in view
@@ -44,6 +44,9 @@ export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
     <motion.section
       ref={ref}
       className="relative0 h-screen flex items-center justify-center overflow-hidden"
+      initial={{ opacity: 0, scale: 2 }}
+      animate={{ opacity: 1, scale: 1.01 }} // Change from whileInView to animate
+      transition={{ duration: 0.5 }}
       style={{
         height: viewportHeight,
         scale: heroScale,
@@ -51,8 +54,8 @@ export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
       }}
     >
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
         className="absolute inset-0 "
         style={{
