@@ -26,7 +26,9 @@ import { DecorativeBorder } from "./components/decorativeComponents/DecorativeBo
 import { VideoIntro } from "./components/VideoIntro";
 import useAudio from "./hooks/useAudio";
 import BodyFrame from "./assets/images/Bodyframe.jpg";
+import VideoBackground from "./assets/video/VideoStaticBackground.mp4";
 import { DecorativeVideoBorder } from "./components/decorativeComponents/DecorativeVideoBorder";
+import { useViewportHeight } from "./hooks/useViewportHeight";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,7 +38,7 @@ function App() {
   const { scrollYProgress } = useScroll();
   const { isPlaying, isMuted, toggleMute, startAudio } = useAudio();
 
-  const heroScale = useTransform(scrollYProgress, [0, 0.3], [1.01, 2], {
+  const heroScale = useTransform(scrollYProgress, [0, 0.3], [1.01, 1.5], {
     clamp: true,
   });
 
@@ -100,14 +102,35 @@ function App() {
 
   return (
     <AnimatePresence>
+      <div className="video-container">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="fixed inset-0 w-full h-full object-cover -z-10 video-overlay "
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "900px",
+            objectFit: "cover",
+          }}
+        >
+          <source src={VideoBackground} type="video/mp4" />
+        </video>
+        <div className="video-overlay" />
+      </div>
+
       <motion.div
-        className="relative bg-cover bg-center bg-fixed bg-repeat-y"
-        style={{ backgroundImage: `url(${BodyFrame})` }}
+        className="relative bg-cover  bg-center bg-fixed bg-repeat-y overflow-hidden" // style={{ backgroundImage: `url(${BodyFrame})` }}
         initial={{ opacity: 1, scale: 1 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <AudioControls isMuted={isMuted} toggleMute={toggleMute} />
+
         <Header
           scrollY={scrollY}
           heroScale={heroScale}

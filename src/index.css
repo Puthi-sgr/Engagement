@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --app-height: 100%;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -12,13 +16,21 @@
     transform: translateY(0);
   }
 }
+
 html,
 body {
   max-width: 100%;
   overflow-x: hidden;
-  position: relative;
+  width: 100%;
+  /* height: 100%; */
+  overflow-y: auto;
   margin: 0;
   padding: 0;
+  min-height: -webkit-fill-available;
+  min-height: 100svh;
+  overscroll-behavior-x: none;
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
 }
 
 html {
@@ -26,9 +38,14 @@ html {
 }
 
 body {
-  @apply antialiased;
+  -webkit-font-smoothing: antialiased;
+  padding: 2px;
+}
 
-  @apply p-[2px] md:p-[2px];
+@media (min-width: 768px) {
+  body {
+    padding: 2px;
+  }
 }
 
 .animate-fade-in {
@@ -92,10 +109,60 @@ body {
 video {
   background-color: transparent !important;
   mix-blend-mode: screen;
+  object-fit: cover;
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
 }
 
+/* Optional overlay to ensure content remains readable */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.8) 40%,
+    rgba(255, 255, 255, 0.8) 60%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  z-index: -1;
+}
 @supports (-webkit-touch-callout: none) {
   .h-screen {
     height: -webkit-fill-available;
   }
 }
+/* 
+.page-wrapper {
+  width: 100%;
+  height: 100svh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  top: 0;
+  left: 0;
+  -webkit-overflow-scrolling: touch;
+  transform: translateZ(0);
+  will-change: transform;
+} */
+
+/* .h-screen-dynamic {
+  height: 100svh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  transform: translateZ(0);
+} */
+
+/* @supports (-webkit-touch-callout: none) {
+  .page-wrapper {
+    height: -webkit-fill-available;
+  }
+} */

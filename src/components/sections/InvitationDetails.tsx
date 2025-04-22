@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import groomFrame from "../../assets/images/groom.png";
-import brideFrame from "../../assets/images/bride.png";
+import groomFrame from "../../assets/images/frame/Manith.png";
+import brideFrame from "../../assets/images/frame/Pichta.png";
+import couple from "../../assets/decorator/CoupleRemove.png";
 import { SparkleArea } from "../Sparkle";
 import { Heart } from "lucide-react";
 import { useInView } from "react-intersection-observer";
@@ -9,7 +10,6 @@ interface InvitationDetailsProps {
   leftColumnY: any;
   rightColumnY: any;
 }
-
 export function InvitationDetails() {
   const { ref, inView } = useInView({
     threshold: 0.05,
@@ -39,14 +39,11 @@ export function InvitationDetails() {
               អ៊ុំ ម៉ាណិត
             </h3>
             <div className="relative flex items-center justify-center my-4">
-              <Heart
-                size={150}
-                strokeWidth={0.5}
-                className="text-gold-500 mt-2"
+              <img
+                src={couple}
+                alt="Couple"
+                className="w-32 h-32 md:w-48 md:h-48"
               />
-              <p className="text-3xl md:text-xl text-gold-800 font-serif absolute z-10">
-                ជាគូ​នឺង
-              </p>
             </div>
             {inView && (
               <SparkleArea

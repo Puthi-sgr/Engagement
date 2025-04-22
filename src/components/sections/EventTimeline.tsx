@@ -98,7 +98,7 @@ export function EventTimeline() {
                       <h3 className="text-2xl font-serif text-gold-400 mb-2">
                         {event.time}
                       </h3>
-                      <h4 className="text-xl font-medium text-gold-500 mb-2">
+                      <h4 className="text-xl font-medium text-gold-600 mb-2">
                         {event.title}
                       </h4>
                       <p className="text-gold-300">{event.description}</p>

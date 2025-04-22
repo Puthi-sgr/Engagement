@@ -13,7 +13,7 @@ interface DateAndVenueProps {
 export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
   return (
     <motion.section
-      className="pt-64 bg-transparent relative overflow-hidden"
+      className="pt-64 bg-transparent relative overflow-hidden "
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.2, delay: 0 }}
