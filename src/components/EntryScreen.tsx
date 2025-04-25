@@ -1,7 +1,9 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Heart } from 'lucide-react';
-import { SparkleArea } from './Sparkle';
+import React from "react";
+import { motion } from "framer-motion";
+import { Heart } from "lucide-react";
+import { SparkleArea } from "./Sparkle";
+import button from "../assets/decorativeButtons/14.png";
+import DecorativeElementContainer from "./decorativeComponents/DecorativeElementContainer";
 
 interface EntryScreenProps {
   onEnter: () => void;
@@ -11,13 +13,13 @@ export function EntryScreen({ onEnter }: EntryScreenProps) {
   return (
     <div className="fixed inset-0 bg-gradient-to-b from-pink-100/80 via-gold-50 to-pink-50 flex items-center justify-center z-50">
       {/* Background Sparkles */}
-      <SparkleArea 
-        density={70}
-        colors={['#FFFFFF', '#FFF9C4', '#FFD700', '#FFB6C1', '#FFE4EE']}
+      <SparkleArea
+        density={50}
+        colors={["#FFFFFF", "#FFF9C4", "#FFD700", "#FFB6C1", "#FFE4EE"]}
         minSize={4}
         maxSize={12}
       />
-      
+
       <div className="text-center px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -28,11 +30,11 @@ export function EntryScreen({ onEnter }: EntryScreenProps) {
           <h1 className="text-6xl md:text-8xl font-serif text-gold-600 mb-4">
             Manith & Pichta
           </h1>
-          <p className="text-xl md:text-2xl text-pink-400 font-light tracking-widest">
-            Wedding Invitation
+          <p className="text-xl md:text-2xl text-gold-700 font-light tracking-widest">
+            ការអញ្ជើញចូលរួម
           </p>
         </motion.div>
-        
+
         <motion.button
           onClick={onEnter}
           className="relative group"
@@ -40,37 +42,53 @@ export function EntryScreen({ onEnter }: EntryScreenProps) {
           whileTap={{ scale: 0.95 }}
         >
           {/* Pulsing rings */}
-          <motion.div 
-            className="absolute inset-0 rounded-full bg-pink-400/20"
-            animate={{ 
-              scale: [1, 1.5, 1],
-              opacity: [0.7, 0, 0.7]
+          <motion.div
+            className="absolute inset-0 rounded-lg bg-pink-400/5"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.7, 0, 0.7],
             }}
-            transition={{ 
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div 
-            className="absolute inset-0 rounded-full bg-gold-600/30"
-            animate={{ 
-              scale: [1, 1.3, 1],
-              opacity: [0.7, 0, 0.7]
-            }}
-            transition={{ 
+            transition={{
               duration: 2,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: 0.3
             }}
           />
-          
+          <motion.div
+            className="absolute inset-0 rounded-lg bg-gold-600/10"
+            animate={{
+              scale: [1, 1.15, 1],
+              opacity: [0.7, 0, 0.7],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.3,
+            }}
+          />
           {/* Button */}
-          <div className="relative bg-gradient-to-r from-pink-400 to-gold-600 text-white px-8 py-4 rounded-full flex items-center gap-2 shadow-lg shadow-pink-400/30 hover:shadow-gold-600/50 transition-shadow duration-300">
-            <Heart className="w-5 h-5" />
-            <span className="text-lg font-medium tracking-wide">Click to Enter</span>
-          </div>
+          <motion.div className="flex justify-center h-40 -mt-5">
+            <SparkleArea
+              density={20}
+              colors={["#FFFFFF", "#FFF9C4", "#FFD700", "#FFB6C1", "#FFE4EE"]}
+              minSize={4}
+              maxSize={12}
+            />
+            <motion.div
+              className="-mt-16"
+              animate={{
+                scale: [1, 1.02, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <DecorativeElementContainer img={button} size={268} />
+            </motion.div>
+          </motion.div>
         </motion.button>
       </div>
     </div>

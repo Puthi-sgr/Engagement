@@ -5,7 +5,8 @@ import { SparkleArea } from "../Sparkle";
 import { Mail } from "lucide-react";
 import { Calendar, Share2 } from "lucide-react";
 import { MP } from "../MP";
-
+import DecorativeElementContainer from "../decorativeComponents/DecorativeElementContainer";
+import img from "../../assets/decorator/20.png";
 interface DateAndVenueProps {
   onAddToCalendar: () => void;
   onShare: () => void;
@@ -13,7 +14,7 @@ interface DateAndVenueProps {
 export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
   return (
     <motion.section
-      className="pt-64 bg-transparent relative overflow-hidden "
+      className="pt-32 bg-transparent relative overflow-hidden "
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.2, delay: 0 }}
@@ -25,11 +26,28 @@ export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             transition={{ duration: 0.4, delay: 0, ease: "backOut" }}
-            viewport={{ margin: "-100px" }}
-            className="mb-12"
+            viewport={{ margin: "100px" }}
+            className="mb-0"
           >
             <Mail className="w-12 h-12 text-gold-600 mx-auto" />
           </motion.div>
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.4, delay: 1, ease: "backOut" }}
+            viewport={{ margin: "-100px" }}
+            className="inline-block flex"
+          >
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+          </motion.div>{" "}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -91,10 +109,18 @@ export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             transition={{ duration: 0.4, delay: 1, ease: "backOut" }}
-            viewport={{ margin: "-100px" }}
-            className="inline-block"
+            viewport={{ margin: "100px" }}
+            className="inline-block flex "
           >
-            <div className="h-0.5 w-24 bg-gold-400 mx-auto" />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
+            <DecorativeElementContainer img={img} size={100} />
           </motion.div>{" "}
         </div>
       </div>
