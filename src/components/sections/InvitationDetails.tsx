@@ -17,9 +17,12 @@ export function InvitationDetails() {
   });
 
   return (
-    <section ref={ref} className="pt-12 md:py-24 bg-white overflow-hidden">
+    <section
+      ref={ref}
+      className="relative pt-12 md:py-24 overflow-hidden bg-gradient-to-b from-white/0 via-white to-white/0"
+    >
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-1 max-w-7xl mx-auto">
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-1 max-w-7xl mx-auto">
           {/* Groom's Column */}
           <motion.div
             className="text-center relative"
@@ -83,6 +86,31 @@ export function InvitationDetails() {
           </motion.div>
         </div>
       </div>
+      <motion.div
+        className="absolute inset-8 border-2 border-gold-600/30 z-20"
+        animate={{
+          scale: [1, 1.02, 1],
+          opacity: [0.5, 1, 0.5],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        className="absolute inset-6 border border-gold-400/40 z-20"
+        animate={{
+          scale: [1, 1.01, 1],
+          opacity: [0.6, 0.8, 0.6],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.5,
+        }}
+      />
     </section>
   );
 }

@@ -17,7 +17,7 @@ export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
       className="pt-32 bg-transparent relative overflow-hidden "
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.2, delay: 0 }}
+      transition={{ duration: 0.2, delay: 0, ease: "backOut" }}
       viewport={{ margin: "0px" }}
     >
       <div className="container mx-auto px-4">
@@ -25,7 +25,7 @@ export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
-            transition={{ duration: 0.4, delay: 0, ease: "backOut" }}
+            transition={{ duration: 0.3, delay: 0, ease: "backOut" }}
             viewport={{ margin: "100px" }}
             className="mb-0"
           >
@@ -83,7 +83,7 @@ export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
               <span className="mx-2 font-bold">||</span> ឆ្នាំ២០២៥
             </h3>
             <div className="flex items-center justify-center gap-8 mt-8 mb-8">
-              <motion.button
+              {/* <motion.button
                 onClick={onAddToCalendar}
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
@@ -92,13 +92,13 @@ export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
               >
                 <Calendar className="w-5 h-5" />
                 Add to Calendar
-              </motion.button>
+              </motion.button> */}
               <motion.button
                 onClick={onShare}
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{ duration: 0.4, delay: 0.8, ease: "backOut" }}
-                className="flex items-center gap-2 px-6 py-3 border-2 border-gold-600 text-gold-600 rounded-full hover:bg-gold-600 hover:text-white transition-colors duration-300"
+                className="flex items-center gap-2 px-6 py-3 border-2 border-gold-600 text-white rounded-full bg-gold-600 hover:text-white transition-colors duration-300"
               >
                 <Share2 className="w-5 h-5" />
                 Share

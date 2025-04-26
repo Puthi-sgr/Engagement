@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Navigation, Car, Hotel, Plane } from "lucide-react";
-import button from "../../assets/decorativeButtons/12.png";
+import button from "../../assets/decorativeButtons/13.png";
 import DecorativeElementContainer from "../decorativeComponents/DecorativeElementContainer";
 
 export function VenueInformation() {
@@ -9,7 +9,7 @@ export function VenueInformation() {
 
   return (
     <motion.section
-      className="pt-12 bg-gold-50 relative overflow-hidden"
+      className="pt-12 bg-gold-50 relative overflow-hidden border-gold-500 border-t-2 border-b-2"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}

@@ -17,6 +17,11 @@ export function VideoIntro({ onComplete }: VideoIntroProps) {
     return () => clearTimeout(timer);
   }, [onComplete]);
 
+  const handleSkipClick = () => {
+    console.log("Handle skip has been clicked");
+    onComplete();
+  };
+
   return (
     <AnimatePresence>
       <motion.div
@@ -41,7 +46,7 @@ export function VideoIntro({ onComplete }: VideoIntroProps) {
         <motion.button
           className="absolute bottom-8 right-8 px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-full 
                      hover:bg-white/20 transition-colors duration-300"
-          onClick={onComplete}
+          onClick={handleSkipClick}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
