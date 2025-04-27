@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Camera } from "lucide-react";
 import { PhotoZoomModalView } from "../PhotoZoomModalView";
 import { Move, ZoomIn } from "lucide-react";
+import "../../index.css";
 import pic1 from "../../assets/gallery/1.webp";
 import pic2 from "../../assets/gallery/2.webp";
 import pic3 from "../../assets/gallery/3.webp";
@@ -43,6 +44,7 @@ export function PhotoGallery() {
   const [cursorVariant, setCursorVariant] = useState<
     "default" | "drag" | "zoom"
   >("default");
+  const [isInteracting, setIsInteracting] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
   const constraintsRef = useRef<HTMLDivElement>(null);
 
@@ -277,32 +279,6 @@ export function PhotoGallery() {
             កម្រងរូបភាពអនុស្សាវរីយ៍
           </h2>
         </motion.div>
-        {/* Cluster Navigation */}
-        {/* <motion.div
-          className="flex flex-wrap justify-center gap-4 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          {["all", "engagement", "ceremony", "family", "friends"].map(
-            (cluster) => (
-              <motion.button
-                key={cluster}
-                onClick={() => setActiveCluster(cluster)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
-                  activeCluster === cluster
-                    ? "bg-gold-600 text-white"
-                    : "bg-gold-50 text-gray-700 hover:bg-gold-100"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {cluster.charAt(0).toUpperCase() + cluster.slice(1)}
-              </motion.button>
-            )
-          )}
-        </motion.div> */}
         {/* Draggable Photo Grid */}
         <div className="relative">
           <div
@@ -322,14 +298,18 @@ export function PhotoGallery() {
           >
             <div ref={constraintsRef} className="overflow-hidden relative">
               <motion.div
-                className="grid grid-cols-6 md:grid-cols-6 gap-2 min-h-[400px] w-[calc(100%+200px)]"
+                className="grid grid-cols-6 md:grid-cols-6 gap-2 min-h-[400px] w-[calc(100%+200px)] photo-gallery-grid"
                 drag="x"
                 dragConstraints={constraintsRef}
                 onMouseEnter={() => setCursorVariant("drag")}
                 onMouseLeave={() => setCursorVariant("default")}
-                dragElastic={0.1}
+                dragElastic={0}
                 dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
                 initial={{ x: 0 }}
+                onDragStart={() => setIsInteracting(true)}
+                onDragEnd={() => {
+                  setTimeout(() => setIsInteracting(false), 100);
+                }}
               >
                 {filteredPhotos.map((photo) => (
                   <motion.div
@@ -345,7 +325,11 @@ export function PhotoGallery() {
                       scale: 1.03,
                       transition: { duration: 0.3 },
                     }}
-                    onClick={() => setSelectedPhoto(photo)}
+                    onClick={() => {
+                      if (!isInteracting) {
+                        setSelectedPhoto(photo);
+                      }
+                    }}
                     onMouseEnter={() => setCursorVariant("zoom")}
                     onMouseLeave={() => setCursorVariant("drag")}
                   >

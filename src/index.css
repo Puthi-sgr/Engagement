@@ -29,7 +29,7 @@ body {
   min-height: -webkit-fill-available;
   min-height: 100svh;
   overscroll-behavior-x: none;
-  touch-action: pan-y pinch-zoom;
+  touch-action: pan-y; /* Only allow vertical scrolling by default */
   -webkit-overflow-scrolling: touch;
 }
 
@@ -134,6 +134,21 @@ video {
   );
   z-index: -1;
 }
+
+.modal-content {
+  touch-action: none; /* Disable browser handling inside modal */
+}
+
+.photo-gallery-grid {
+  touch-action: pan-x; /* Allow horizontal scrolling for the gallery */
+}
+
+/* Prevent content shift on mobile */
+.fixed {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
 @supports (-webkit-touch-callout: none) {
   .h-screen {
     height: -webkit-fill-available;

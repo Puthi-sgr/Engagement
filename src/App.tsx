@@ -126,7 +126,7 @@ function App() {
       </div>
 
       <motion.div
-        className="relative bg-cover  bg-center bg-fixed bg-repeat-y overflow-hidden" // style={{ backgroundImage: `url(${BodyFrame})` }}
+        className="relative bg-cover bg-center bg-fixed bg-repeat-y overflow-hidden" // style={{ backgroundImage: `url(${BodyFrame})` }}
         initial={{ opacity: 1, scale: 1 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}

@@ -3,6 +3,7 @@ import { Photo } from "./sections/PhotoGallery";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, X } from "lucide-react";
 import { useScrollLock } from "../hooks/useScrollLock";
+import "../index.css";
 
 interface ModalView {
   setSelectedPhoto: (photo: Photo | null) => void;
@@ -15,9 +16,19 @@ export const PhotoZoomModalView = ({
   setSelectedPhoto,
   photos,
 }: ModalView) => {
-  const [direction, setDirection] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [dragPosition, setDragPosition] = useState(0);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const handleModalClose = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setIsClosing(true);
+    setTimeout(() => {
+      setSelectedPhoto(null);
+    }, 100);
+  };
   const getNextPhotoIndex = (currentId: string) => {
     const currentIndex = photos.findIndex((photo) => photo.id === currentId);
     return (currentIndex + 1) % photos.length; //wraps around the photos, avoid overflow of index.
@@ -30,7 +41,6 @@ export const PhotoZoomModalView = ({
 
   const handleNextPhoto = () => {
     if (selectedPhoto) {
-      setDirection(1);
       const nextIndex = getNextPhotoIndex(selectedPhoto.id);
       return setSelectedPhoto(photos[nextIndex]);
     }
@@ -38,14 +48,15 @@ export const PhotoZoomModalView = ({
 
   const handlePrevPhoto = () => {
     if (selectedPhoto) {
-      setDirection(-1);
       const prevIndex = getPrevPhotoIndex(selectedPhoto.id);
       return setSelectedPhoto(photos[prevIndex]);
     }
   };
   useEffect(() => {
     const preventTouchMove = (e: TouchEvent) => {
-      if (!isDragging) {
+      if (!isDragging) return;
+
+      if (e.target && (e.target as Element).closest(".modal-content")) {
         e.preventDefault();
       }
     };
@@ -88,13 +99,14 @@ export const PhotoZoomModalView = ({
       </motion.button>
       <motion.button
         className="absolute top-6 right-6 z-10 text-white bg-gold-600/20 backdrop-blur-sm p-2 rounded-full"
-        onClick={() => setSelectedPhoto(null)}
+        onClick={handleModalClose}
       >
         <X className="w-9 h-9" />
       </motion.button>
 
+      {/* Modal content */}
       <motion.div
-        className="relative max-w-xl max-h-[100%] overflow-hidden rounded-lg"
+        className="relative max-w-xl max-h-[100%] overflow-hidden rounded-lg modal-content"
         initial={{ scale: 0.9 }}
         animate={{
           scale: 1,
@@ -107,34 +119,34 @@ export const PhotoZoomModalView = ({
         }}
         exit={{ scale: 0.9 }}
         onClick={(e) => e.stopPropagation()}
-        drag="x"
+        drag={isClosing ? false : "x"}
         dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0}
         onDragStart={() => setIsDragging(true)}
         onDragEnd={(e, { offset, velocity }) => {
           setIsDragging(false);
 
-          // Updated swipe detection logic
-          if (offset.x < -100 && Math.abs(velocity.x) > 0.5) {
-            handleNextPhoto();
-          } else if (offset.x > 100 && Math.abs(velocity.x) > 0.5) {
-            handlePrevPhoto();
+          // Swipe won't be handled with the isClosing is true
+          if (!isClosing) {
+            if (offset.x < -80 && Math.abs(velocity.x) > 0.3) {
+              handleNextPhoto();
+            } else if (offset.x > 80 && Math.abs(velocity.x) > 0.3) {
+              handlePrevPhoto();
+            }
           }
-
           setDragPosition(0);
         }}
         onDrag={(e, { offset }) => {
-          setDragPosition(offset.x);
+          if (!isClosing) {
+            setDragPosition(offset.x);
+          }
         }}
       >
-        <AnimatePresence mode="wait" initial={false} custom={direction}>
+        <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={selectedPhoto.id}
             className="relative max-w-3xl max-h-[80vh] overflow-hidden rounded-lg"
-            custom={direction}
             initial={{
               opacity: 0,
-              x: direction * 20,
             }}
             animate={{
               opacity: 1,
@@ -146,7 +158,7 @@ export const PhotoZoomModalView = ({
             }}
             exit={{
               opacity: 0,
-              x: direction * -20,
+
               transition: {
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 },

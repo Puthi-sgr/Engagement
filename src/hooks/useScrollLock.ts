@@ -1,29 +1,39 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export const useScrollLock = (isLocked: boolean) => {
+  // Use a ref to store the original scroll position
+  const scrollYRef = useRef(0);
+
   useEffect(() => {
     if (isLocked) {
-      //Get current scroll position
-      const scrollY = window.scrollY;
+      // Store original styles and position
+      const originalStyles = {
+        position: document.body.style.position,
+        top: document.body.style.top,
+        width: document.body.style.width,
+        overflow: document.body.style.overflow,
+      };
 
-      //Store current body position
+      // Store current scroll position
+      scrollYRef.current = window.scrollY;
+
+      // Apply scroll lock
       document.body.style.position = "fixed";
       document.body.style.width = "100%";
-      //drag the body position to the correct place by using the scrollY position
-      document.body.style.top = `-${scrollY}px`;
-      // Prevent scroll
+      document.body.style.top = `-${scrollYRef.current}px`;
       document.body.style.overflow = "hidden";
 
       return () => {
-        document.body.style.position = "";
-        document.body.style.overflow = "";
-        document.body.style.top = "";
-        document.body.style.overflow = "";
+        // Restore original styles
+        document.body.style.position = originalStyles.position;
+        document.body.style.top = originalStyles.top;
+        document.body.style.width = originalStyles.width;
+        document.body.style.overflow = originalStyles.overflow;
 
-        window.scrollTo({
-          top: scrollY,
-          behavior: "instant",
-        });
+        // Use a small delay to ensure styles are applied before scrolling
+        setTimeout(() => {
+          window.scrollTo(0, scrollYRef.current);
+        }, 10);
       };
     }
   }, [isLocked]);
