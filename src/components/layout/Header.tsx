@@ -14,7 +14,11 @@ interface HeaderProps {
   heroOpacity: MotionValue<number>;
 }
 
-export function Header({ scrollY, heroScale, heroOpacity }: HeaderProps) {
+export default function Header({
+  scrollY,
+  heroScale,
+  heroOpacity,
+}: HeaderProps) {
   const [viewportHeight, setViewportHeight] = useState("101vh"); //initial state for header
 
   const { ref, inView } = useInView({

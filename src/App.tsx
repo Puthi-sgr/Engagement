@@ -5,28 +5,34 @@ import {
   motion,
   AnimatePresence,
 } from "framer-motion";
-import { Header } from "./components/layout/Header";
+import { useInView } from "react-intersection-observer";
 import { Footer } from "./components/layout/Footer";
+import Header from "./components/layout/Header";
 import { FormalRequest } from "./components/sections/FormalRequest";
-import { InvitationDetails } from "./components/sections/InvitationDetails";
 import { EventTimeline } from "./components/sections/EventTimeline";
 import { VenueInformation } from "./components/sections/VenueInformation";
-import { PhotoGallery } from "./components/sections/PhotoGallery";
 import { OurStory } from "./components/sections/OurStory";
 import { GiftRegistry } from "./components/sections/GiftRegistry";
-import { addToCalendar } from "./utils/calendar";
 import { shareInvitation } from "./utils/share";
 import { EntryScreen } from "./components/EntryScreen";
 import { AudioControls } from "./components/AudioControls";
 import { VideoIntro } from "./components/VideoIntro";
 import useAudio from "./hooks/useAudio";
-
 import VideoBackground from "./assets/video/VideoStaticBackground.mp4";
+import { tr } from "framer-motion/client";
 
+const PhotoGallery = lazy(() => import("./components/sections/PhotoGallery"));
+const InvitationDetails = lazy(
+  () => import("./components/sections/InvitationDetails")
+);
 function App() {
   const [entryScreenVisible, setEntryScreenVisible] = useState(true);
   const [scrollY, setScrollY] = useState(0);
   const { scrollYProgress } = useScroll();
+  const { ref, inView } = useInView({
+    threshold: 0.2, // Trigger when 10% of component is visible
+    triggerOnce: true, // Only trigger once
+  });
   const { isPlaying, isMuted, toggleMute, startAudio } = useAudio();
 
   const heroScale = useTransform(scrollYProgress, [0, 0.3], [1.01, 1.5], {
@@ -97,18 +103,21 @@ function App() {
           heroScale={heroScale}
           heroOpacity={heroOpacity}
         />
-        <FormalRequest
-          onAddToCalendar={addToCalendar}
-          onShare={shareInvitation}
-        />
-        {/* <CouplePortrait /> */}
-        <InvitationDetails
-        // leftColumnY={leftColumnY}
-        // rightColumnY={rightColumnY}
-        />
+
+        <FormalRequest onShare={shareInvitation} />
+        <Suspense>
+          <InvitationDetails />
+        </Suspense>
         <EventTimeline />
-        <VenueInformation />
-        <PhotoGallery />
+        <div ref={ref}>
+          <VenueInformation />
+        </div>
+
+        {inView && (
+          <Suspense>
+            <PhotoGallery />
+          </Suspense>
+        )}
         <OurStory scrollY={scrollY} />
         {/* <RSVP /> */}
         <GiftRegistry />

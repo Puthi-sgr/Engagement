@@ -10,7 +10,7 @@ interface InvitationDetailsProps {
   leftColumnY: any;
   rightColumnY: any;
 }
-export function InvitationDetails() {
+export default function InvitationDetails() {
   const { ref, inView } = useInView({
     threshold: 0.05,
     triggerOnce: false,

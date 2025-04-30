@@ -13,19 +13,15 @@ import pic6 from "../../assets/gallery/6.webp";
 import pic7 from "../../assets/gallery/7.webp";
 import pic8 from "../../assets/gallery/8.webp";
 import pic9 from "../../assets/gallery/9.webp";
-import pic10 from "../../assets/gallery/10.webp";
 import pic11 from "../../assets/gallery/11.webp";
 import pic12 from "../../assets/gallery/12.webp";
-import pic13 from "../../assets/gallery/13.webp";
 import pic14 from "../../assets/gallery/14.webp";
 import pic15 from "../../assets/gallery/15.webp";
-import pic16 from "../../assets/gallery/16.webp";
 import pic17 from "../../assets/gallery/17.webp";
 import pic18 from "../../assets/gallery/18.webp";
 import pic19 from "../../assets/gallery/19.webp";
 import pic20 from "../../assets/gallery/20.webp";
 import pic21 from "../../assets/gallery/21.webp";
-import pic22 from "../../assets/gallery/22.webp";
 import pic23 from "../../assets/gallery/23.webp";
 import { select } from "framer-motion/client";
 /*turns array of key value pair into object of key value pairs*/
@@ -38,7 +34,7 @@ export interface Photo {
   cluster: "ceremony" | "engagement" | "family" | "friends";
 }
 
-export function PhotoGallery() {
+export default function PhotoGallery() {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [isInteracting, setIsInteracting] = useState(false);
   const constraintsRef = useRef<HTMLDivElement>(null);
