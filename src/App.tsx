@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, Suspense, lazy } from "react";
 import {
   useScroll,
   useTransform,
@@ -7,33 +7,24 @@ import {
 } from "framer-motion";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
-import { Loading } from "./components/Loading";
 import { FormalRequest } from "./components/sections/FormalRequest";
-import { CouplePortrait } from "./components/sections/CouplePortrait";
 import { InvitationDetails } from "./components/sections/InvitationDetails";
-import { DateAndVenue } from "./components/sections/DateAndVenue";
 import { EventTimeline } from "./components/sections/EventTimeline";
 import { VenueInformation } from "./components/sections/VenueInformation";
 import { PhotoGallery } from "./components/sections/PhotoGallery";
 import { OurStory } from "./components/sections/OurStory";
-import { RSVP } from "./components/sections/RSVP";
 import { GiftRegistry } from "./components/sections/GiftRegistry";
 import { addToCalendar } from "./utils/calendar";
 import { shareInvitation } from "./utils/share";
 import { EntryScreen } from "./components/EntryScreen";
 import { AudioControls } from "./components/AudioControls";
-import { DecorativeBorder } from "./components/decorativeComponents/DecorativeBorder";
 import { VideoIntro } from "./components/VideoIntro";
 import useAudio from "./hooks/useAudio";
-import BodyFrame from "./assets/images/Bodyframe.jpg";
+
 import VideoBackground from "./assets/video/VideoStaticBackground.mp4";
-import { DecorativeVideoBorder } from "./components/decorativeComponents/DecorativeVideoBorder";
-import { useViewportHeight } from "./hooks/useViewportHeight";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const [entryScreenVisible, setEntryScreenVisible] = useState(true);
-  const [showVideo, setShowVideo] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const { scrollYProgress } = useScroll();
   const { isPlaying, isMuted, toggleMute, startAudio } = useAudio();
@@ -49,55 +40,23 @@ function App() {
     { clamp: true }
   );
 
-  const leftColumnY = useTransform(scrollYProgress, [0, 1], [50, 0], {
-    clamp: true,
-  });
-
-  const rightColumnY = useTransform(scrollYProgress, [0, 1], [-50, 0], {
-    clamp: true,
-  });
-
   //Memoize handleScroll
   const handleScroll = useCallback(() => setScrollY(window.scrollY), []);
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
-
-    // Simulate loading
-    setTimeout(() => setIsLoading(false), 2000);
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
   const handleEnter = useCallback(() => {
     setEntryScreenVisible(false);
-    setShowVideo(true);
     startAudio();
   }, [startAudio]);
-
-  const handleVideoComplete = useCallback(() => {
-    console.log("Video complete handler called, current showVideo:", showVideo);
-    setShowVideo(false);
-    console.log("Set showVideo to false");
-  }, []);
 
   if (entryScreenVisible) {
     return (
       <>
-        {/* <DecorativeBorder /> */}
         <EntryScreen onEnter={handleEnter} />
-      </>
-    );
-  }
-
-  if (showVideo) {
-    return <VideoIntro onComplete={handleVideoComplete} />;
-  }
-
-  if (isLoading) {
-    return (
-      <>
-        <DecorativeBorder />
-        <Loading />
       </>
     );
   }

@@ -7,7 +7,6 @@ import MP from "../../assets/images/InitialRemovedBG.png";
 import Hero from "../../assets/images/Hero.webp";
 import { MotionValue } from "framer-motion";
 import { BackgroundOverlay } from "../decorativeComponents/BackgroundOverlay";
-import { once } from "events";
 
 interface HeaderProps {
   scrollY: number;

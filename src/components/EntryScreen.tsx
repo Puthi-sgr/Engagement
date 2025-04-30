@@ -27,12 +27,12 @@ export function EntryScreen({ onEnter }: EntryScreenProps) {
           transition={{ duration: 1 }}
           className="mb-8"
         >
-          <h1 className="text-6xl md:text-8xl font-serif text-gold-600 mb-4">
-            Manith & Pichta
+          <h1 className="text-7xl md:text-8xl font-alex-brush text-gold-600 mb-36">
+            The engagement <br></br>of
           </h1>
-          <p className="text-xl md:text-2xl text-gold-700 font-light tracking-widest">
-            ការអញ្ជើញចូលរួម
-          </p>
+          <h1 className="text-6xl md:text-8xl font-alex-brush text-gold-600 mb-4">
+            Manith <br></br>& Pichta
+          </h1>
         </motion.div>
 
         <motion.button
@@ -42,31 +42,7 @@ export function EntryScreen({ onEnter }: EntryScreenProps) {
           whileTap={{ scale: 0.95 }}
         >
           {/* Pulsing rings */}
-          <motion.div
-            className="absolute inset-0 rounded-lg bg-pink-400/5"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.7, 0, 0.7],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div
-            className="absolute inset-0 rounded-lg bg-gold-600/10"
-            animate={{
-              scale: [1, 1.15, 1],
-              opacity: [0.7, 0, 0.7],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.3,
-            }}
-          />
+
           {/* Button */}
           <motion.div className="flex justify-center h-40 -mt-5">
             <SparkleArea

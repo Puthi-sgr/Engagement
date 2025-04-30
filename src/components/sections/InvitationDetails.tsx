@@ -86,7 +86,7 @@ export function InvitationDetails() {
           </motion.div>
         </div>
       </div>
-      <motion.div
+      {/* <motion.div
         className="absolute inset-8 border-2 border-gold-600/30 z-20"
         animate={{
           scale: [1, 1.02, 1],
@@ -110,7 +110,7 @@ export function InvitationDetails() {
           ease: "easeInOut",
           delay: 0.5,
         }}
-      />
+      /> */}
     </section>
   );
 }

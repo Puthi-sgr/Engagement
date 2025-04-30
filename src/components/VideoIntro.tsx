@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import video from "../assets/video/intro.mp4";
+import video from "../assets/video/IntroCompressed.webm";
 import "../index.css";
 
 interface VideoIntroProps {
@@ -8,6 +8,11 @@ interface VideoIntroProps {
 }
 
 export function VideoIntro({ onComplete }: VideoIntroProps) {
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  const handleLoadedVideo = () => {
+    setIsLoading(false);
+  };
   useEffect(() => {
     // Auto-complete after video duration (8 seconds)
     const timer = setTimeout(() => {
@@ -24,6 +29,11 @@ export function VideoIntro({ onComplete }: VideoIntroProps) {
 
   return (
     <AnimatePresence>
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-white">Loading...</div>
+        </div>
+      )}
       <motion.div
         className="fixed inset-0 bg-black z-[9999]"
         initial={{ opacity: 0 }}
@@ -36,6 +46,7 @@ export function VideoIntro({ onComplete }: VideoIntroProps) {
           autoPlay
           muted
           playsInline
+          onLoadedData={handleLoadedVideo}
           onEnded={onComplete}
         >
           <source src={video} type="video/mp4" />

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Puthi-sgr.github.io/Engagement",
+  "homepage": "/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@fontsource/alex-brush": "^5.2.5",
     "add-to-calendar-button": "^2.5.7",
     "framer-motion": "^11.0.8",
     "lucide-react": "^0.344.0",
@@ -37,6 +38,7 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
-    "vite": "^5.4.2"
+    "vite": "^5.4.2",
+    "vite-plugin-sitemap": "^0.7.1"
   }
 }

@@ -1,7 +1,6 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { DecorativeLine } from "../decorativeComponents/DecorativeLine";
-import flower from "../../assets/decorator/20.png";
+
 import {
   Clock,
   Utensils,
@@ -9,7 +8,6 @@ import {
   MessageCircleHeart,
   Camera,
 } from "lucide-react";
-import DecorativeElementContainer from "../decorativeComponents/DecorativeElementContainer";
 
 export function EventTimeline() {
   const timelineEvents = [
@@ -41,7 +39,7 @@ export function EventTimeline() {
   ];
   return (
     <motion.section
-      className="pt-12  bg-gray relative overflow-hidden"
+      className="pt-12  bg-gradient-to-b from-white/0 via-white/30 to-white/0 relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}

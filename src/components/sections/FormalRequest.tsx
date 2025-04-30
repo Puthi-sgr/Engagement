@@ -14,7 +14,7 @@ interface DateAndVenueProps {
 export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
   return (
     <motion.section
-      className="pt-32 bg-transparent relative overflow-hidden "
+      className="pt-32  bg-gradient-to-b from-white/0 via-white/40 to-white/0 relative overflow-hidden "
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.2, delay: 0, ease: "backOut" }}
@@ -27,27 +27,10 @@ export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
             whileInView={{ scale: 1 }}
             transition={{ duration: 0.3, delay: 0, ease: "backOut" }}
             viewport={{ margin: "100px" }}
-            className="mb-0"
+            className="mb-12"
           >
             <Mail className="w-12 h-12 text-gold-600 mx-auto" />
           </motion.div>
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.4, delay: 1, ease: "backOut" }}
-            viewport={{ margin: "-100px" }}
-            className="inline-block flex"
-          >
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-          </motion.div>{" "}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -105,23 +88,6 @@ export function FormalRequest({ onAddToCalendar, onShare }: DateAndVenueProps) {
               </motion.button>
             </div>
           </motion.div>
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.4, delay: 1, ease: "backOut" }}
-            viewport={{ margin: "100px" }}
-            className="inline-block flex "
-          >
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-            <DecorativeElementContainer img={img} size={100} />
-          </motion.div>{" "}
         </div>
       </div>
     </motion.section>

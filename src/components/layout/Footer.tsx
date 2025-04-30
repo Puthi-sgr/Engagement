@@ -26,8 +26,8 @@ export function Footer({ onShare }: FooterProps) {
             <Share2 className="w-6 h-6" />
           </motion.button>
         </div>
-        <p className="text-sm text-gray-400">
-          #SarahAndJames2024
+        <p className="text-sm  text-gray-400">
+            Divinely protected
         </p>
       </div>
     </footer>

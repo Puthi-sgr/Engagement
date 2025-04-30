@@ -39,13 +39,8 @@ export interface Photo {
 }
 
 export function PhotoGallery() {
-  const [activeCluster, setActiveCluster] = useState<string>("all");
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
-  const [cursorVariant, setCursorVariant] = useState<
-    "default" | "drag" | "zoom"
-  >("default");
   const [isInteracting, setIsInteracting] = useState(false);
-  const cursorRef = useRef<HTMLDivElement>(null);
   const constraintsRef = useRef<HTMLDivElement>(null);
 
   const photos: Photo[] = [
@@ -194,48 +189,6 @@ export function PhotoGallery() {
       cluster: "ceremony",
     },
   ];
-  // Filter photos based on active cluster
-  const filteredPhotos =
-    activeCluster === "all"
-      ? photos
-      : photos.filter((photo) => photo.cluster === activeCluster);
-
-  // Custom cursor movement
-  useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      if (cursorRef.current) {
-        cursorRef.current.style.top = `${e.clientY}px`;
-        cursorRef.current.style.left = `${e.clientX}px`;
-      }
-    };
-
-    window.addEventListener("mousemove", moveCursor);
-    return () => {
-      window.removeEventListener("mousemove", moveCursor);
-    };
-  }, []);
-
-  // Cursor variants
-  const cursorVariants = {
-    default: {
-      opacity: 0,
-      scale: 0.7,
-    },
-    drag: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.2,
-      },
-    },
-    zoom: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
 
   return (
     <motion.section
@@ -246,24 +199,7 @@ export function PhotoGallery() {
       viewport={{ once: true, margin: "-100px" }}
     >
       {/* Custom Cursor */}
-      <motion.div
-        ref={cursorRef}
-        className="fixed w-16 h-16 pointer-events-none z-50 flex items-center justify-center"
-        variants={cursorVariants}
-        animate={cursorVariant}
-        style={{ translateX: "-50%", translateY: "-50%" }}
-      >
-        {cursorVariant === "drag" && (
-          <div className="bg-gold-600/30 backdrop-blur-sm rounded-full w-full h-full flex items-center justify-center">
-            <Move className="text-white w-6 h-6" />
-          </div>
-        )}
-        {cursorVariant === "zoom" && (
-          <div className="bg-gold-600/30 backdrop-blur-sm rounded-full w-full h-full flex items-center justify-center">
-            <ZoomIn className="text-white w-6 h-6" />
-          </div>
-        )}
-      </motion.div>
+
       <div className="container mx-auto px-4 pt-6">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
@@ -281,78 +217,44 @@ export function PhotoGallery() {
         </motion.div>
         {/* Draggable Photo Grid */}
         <div className="relative">
-          <div
-            className="absolute inset-0 rounded-xl border-4 border-gold-200 transform"
-            style={{
-              backgroundImage: "url('frame.png')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
-          <motion.div
-            className="overflow-hidden  border-4 border-gold-100 p-4 bg-transparent shadow-lg relative"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
+          <div className="absolute inset-0 rounded-xl border-4 border-gold-200" />
+          <div className="overflow-hidden border-4 border-gold-100 p-4 bg-transparent shadow-lg relative">
             <div ref={constraintsRef} className="overflow-hidden relative">
               <motion.div
-                className="grid grid-cols-6 md:grid-cols-6 gap-2 min-h-[400px] w-[calc(100%+200px)] photo-gallery-grid"
+                className="grid grid-cols-6 md:grid-cols-6 gap-2 min-h-[400px] w-[calc(100%+200px)]"
                 drag="x"
                 dragConstraints={constraintsRef}
-                onMouseEnter={() => setCursorVariant("drag")}
-                onMouseLeave={() => setCursorVariant("default")}
                 dragElastic={0}
-                dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
-                initial={{ x: 0 }}
+                initial={false} // Disable initial animation
                 onDragStart={() => setIsInteracting(true)}
-                onDragEnd={() => {
-                  setTimeout(() => setIsInteracting(false), 100);
-                }}
+                onDragEnd={() => setTimeout(() => setIsInteracting(false), 100)}
+                style={{ touchAction: "pan-x" }} // Optimize for touch
               >
-                {filteredPhotos.map((photo) => (
-                  <motion.div
+                {photos.map((photo) => (
+                  <div
                     key={photo.id}
-                    className={`relative overflow-hidden rounded-lg shadow-sm cursor-pointer
+                    className={`relative overflow-hidden rounded-lg shadow-sm cursor-pointer transform transition-transform duration-300 hover:scale-[1.03]
                       ${photo.width === 2 ? "col-span-2" : "col-span-1"}
                       ${photo.height === 2 ? "row-span-2" : "row-span-1"}
                     `}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    whileHover={{
-                      scale: 1.03,
-                      transition: { duration: 0.3 },
-                    }}
                     onClick={() => {
-                      if (!isInteracting) {
-                        setSelectedPhoto(photo);
-                      }
+                      if (!isInteracting) setSelectedPhoto(photo);
                     }}
-                    onMouseEnter={() => setCursorVariant("zoom")}
-                    onMouseLeave={() => setCursorVariant("drag")}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 z-10" />
                     <img
                       src={photo.url}
                       alt={photo.alt}
                       className="w-full h-full object-cover aspect-square"
                       loading="lazy"
+                      draggable="false"
                     />
-                    <motion.div
-                      className="absolute bottom-0 left-0 right-0 p-2 text-white z-20 opacity-0 hover:opacity-100 transition-opacity duration-300"
-                      initial={{ y: 20 }}
-                      whileHover={{ y: 0 }}
-                    >
-                      <p className="text-xs font-light">{photo.alt}</p>
-                    </motion.div>
-                  </motion.div>
+                  </div>
                 ))}
               </motion.div>
             </div>
-          </motion.div>
-        </div>{" "}
+          </div>
+        </div>
         {/* Photo Zoom Modal */}
         {selectedPhoto && (
           <PhotoZoomModalView
