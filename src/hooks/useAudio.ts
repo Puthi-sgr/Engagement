@@ -1,25 +1,38 @@
 import { useState, useEffect, useRef } from "react";
 import useSound from "use-sound";
 import song from "../assets/audio/soundtrack.mp3";
+import { a, u } from "framer-motion/client";
 // Background music URL - using a royalty-free music track
 const BACKGROUND_MUSIC_URL = song;
 
 export default function useAudio() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [duration, setDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     // Create audio element
     const audio = new Audio(BACKGROUND_MUSIC_URL);
+    const startTime = 32;
+    const endTime = 213;
+
     audio.loop = true;
     audio.volume = 0.5;
-    audio.currentTime = 71.5; // Start from 71.5 seconds
-    audioRef.current = audio;
+    audio.currentTime = startTime; // Start from 71.5 seconds
 
+    const handleTimeUpdate = () => {
+      if (audio.currentTime >= endTime) {
+        audio.currentTime = startTime; //Loop back to start time
+      }
+    };
+
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+    audioRef.current = audio;
     // Cleanup on unmount
     return () => {
       if (audioRef.current) {
+        audio.removeEventListener("timeupdate", handleTimeUpdate);
         audioRef.current.pause();
         audioRef.current = null;
       }

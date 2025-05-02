@@ -27,7 +27,7 @@ export default function InvitationDetails() {
         <div className=" grid grid-cols-1 md:grid-cols-2 gap-1 max-w-7xl mx-auto">
           {/* Groom's Column */}
           <motion.div
-            className="text-center relative"
+            className="grid-cols-1 place-items-center"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -40,9 +40,7 @@ export default function InvitationDetails() {
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  w-[200%] h-[200%]  md:w-[200%] md:h-[200%] object-contain"
               />
             </div>
-            <h3 className="text-3xl md:text-3xl font-serif mb-4 text-gold-600">
-              <DecorativeElementContainer img={groomName} size={268} />
-            </h3>
+            <DecorativeElementContainer img={groomName} size={150} my={10} />
             <div className="relative flex items-center justify-center my-4">
               <img
                 src={couple}
@@ -61,13 +59,13 @@ export default function InvitationDetails() {
           </motion.div>
           {/* Bride's Column */}
           <motion.div
-            className="text-center relative"
+            className="grid-cols-1 place-items-center"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ margin: "-100px" }}
           >
-            <DecorativeElementContainer img={brideFrame} size={268} />
+            <DecorativeElementContainer img={brideName} size={150} my={10} />
             <div className="relative w-96 h-96 md:w-80 md:h-80 mx-auto mb-6 bg-transparent rounded-t-[100%] p-4">
               <img
                 src={brideFrame}
