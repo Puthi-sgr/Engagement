@@ -81,7 +81,7 @@ export function GiftRegistry() {
             </motion.div>
           </div>
           <h2 className="text-xl md:text-xl font-serif mb-4 text-gold-600">
-            ជូនចំពោះលោកលោកស្រីជាទីស្រលាញ់ុ
+            ចំពោះលោកលោកស្រីជាទីស្រលាញ់
             <br />
             ដែលមានបំណងបង្ហាញក្តីស្រលាញ់មកកាន់ពួកយើងទាំងពីរដោយការផ្តល់អំណោយ
           </h2>

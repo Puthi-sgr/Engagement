@@ -39,7 +39,7 @@ export function EventTimeline() {
   ];
   return (
     <motion.section
-      className="pt-12  bg-gradient-to-b from-white/0 via-white/30 to-white/0 relative overflow-hidden"
+      className="pt-12  bg-gradient-to-b from-white/30 via-white/30 to-white/0 relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}

@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import { SparkleArea } from "./Sparkle";
-import button from "../assets/decorativeButtons/14.png";
+import button from "../assets/decorativeButtons/EntryButton.png";
 import DecorativeElementContainer from "./decorativeComponents/DecorativeElementContainer";
 
 interface EntryScreenProps {

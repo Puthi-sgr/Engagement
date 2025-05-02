@@ -16,12 +16,12 @@ import { GiftRegistry } from "./components/sections/GiftRegistry";
 import { shareInvitation } from "./utils/share";
 import { EntryScreen } from "./components/EntryScreen";
 import { AudioControls } from "./components/AudioControls";
-import { VideoIntro } from "./components/VideoIntro";
 import useAudio from "./hooks/useAudio";
 import VideoBackground from "./assets/video/VideoStaticBackground.mp4";
-import { tr } from "framer-motion/client";
 
-const PhotoGallery = lazy(() => import("./components/sections/PhotoGallery"));
+const PhotoGallery = lazy(
+  () => import("./components/sections/PhotoGallery/PhotoGallery")
+);
 const InvitationDetails = lazy(
   () => import("./components/sections/InvitationDetails")
 );
@@ -105,12 +105,12 @@ function App() {
         />
 
         <FormalRequest onShare={shareInvitation} />
+        <VenueInformation />
         <Suspense>
           <InvitationDetails />
         </Suspense>
-        <EventTimeline />
         <div ref={ref}>
-          <VenueInformation />
+          <EventTimeline />
         </div>
 
         {inView && (

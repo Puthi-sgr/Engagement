@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import useSound from "use-sound";
-import song from "../assets/music.mp3";
+import song from "../assets/audio/soundtrack.mp3";
 // Background music URL - using a royalty-free music track
-const BACKGROUND_MUSIC_URL = undefined;
+const BACKGROUND_MUSIC_URL = song;
 
 export default function useAudio() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -14,6 +14,7 @@ export default function useAudio() {
     const audio = new Audio(BACKGROUND_MUSIC_URL);
     audio.loop = true;
     audio.volume = 0.5;
+    audio.currentTime = 71.5; // Start from 71.5 seconds
     audioRef.current = audio;
 
     // Cleanup on unmount

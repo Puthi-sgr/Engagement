@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Photo } from "./sections/PhotoGallery";
+import { Photo } from "./PhotoGallery";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, X } from "lucide-react";
-import { useScrollLock } from "../hooks/useScrollLock";
-import "../index.css";
+import { useScrollLock } from "../../../hooks/useScrollLock";
+import "../../../index.css";
+import { u } from "framer-motion/client";
 
 interface ModalView {
   setSelectedPhoto: (photo: Photo | null) => void;
@@ -25,9 +26,13 @@ export const PhotoZoomModalView = ({
     e.stopPropagation();
 
     setIsClosing(true);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
+      console.log("Photo");
       setSelectedPhoto(null);
     }, 100);
+    useScrollLock(false);
+
+    return () => clearTimeout(timer);
   };
   const getNextPhotoIndex = (currentId: string) => {
     const currentIndex = photos.findIndex((photo) => photo.id === currentId);
@@ -141,7 +146,13 @@ export const PhotoZoomModalView = ({
           }
         }}
       >
-        <AnimatePresence mode="wait" initial={false}>
+        <AnimatePresence
+          mode="wait"
+          onExitComplete={() => {
+            setIsClosing(false);
+            setDragPosition(0);
+          }}
+        >
           <motion.div
             key={selectedPhoto.id}
             className="relative max-w-3xl max-h-[80vh] overflow-hidden rounded-lg"

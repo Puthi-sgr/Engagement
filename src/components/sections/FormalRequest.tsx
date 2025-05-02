@@ -13,7 +13,7 @@ interface DateAndVenueProps {
 export function FormalRequest({ onShare }: DateAndVenueProps) {
   return (
     <motion.section
-      className="pt-32  bg-gradient-to-b from-white/0 via-white/40 to-white/0 relative overflow-hidden "
+      className="pt-32  bg-gradient-to-b from-white/0 via-white/40 to-white/50 relative overflow-hidden "
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.2, delay: 0, ease: "backOut" }}
@@ -64,18 +64,7 @@ export function FormalRequest({ onShare }: DateAndVenueProps) {
               ថ្ងៃទី៣១ <span className="mx-2">||</span> ខែឧសភា
               <span className="mx-2 font-bold">||</span> ឆ្នាំ២០២៥
             </h3>
-            <div className="flex items-center justify-center gap-8 mt-8 mb-8">
-              <motion.button
-                onClick={onShare}
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.8, ease: "backOut" }}
-                className="flex items-center gap-2 px-6 py-3 border-2 border-gold-600 text-white rounded-full bg-gold-600 hover:text-white transition-colors duration-300"
-              >
-                <Share2 className="w-5 h-5" />
-                Share
-              </motion.button>
-            </div>
+            <div className="flex items-center justify-center gap-8 mt-8 mb-8"></div>
           </motion.div>
         </div>
       </div>

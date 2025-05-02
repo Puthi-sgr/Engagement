@@ -1,29 +1,29 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Camera } from "lucide-react";
-import { PhotoZoomModalView } from "../PhotoZoomModalView";
+import { PhotoZoomModalView } from "./PhotoZoomModalView";
 import { Move, ZoomIn } from "lucide-react";
-import "../../index.css";
-import pic1 from "../../assets/gallery/1.webp";
-import pic2 from "../../assets/gallery/2.webp";
-import pic3 from "../../assets/gallery/3.webp";
-import pic4 from "../../assets/gallery/4.webp";
-import pic5 from "../../assets/gallery/5.webp";
-import pic6 from "../../assets/gallery/6.webp";
-import pic7 from "../../assets/gallery/7.webp";
-import pic8 from "../../assets/gallery/8.webp";
-import pic9 from "../../assets/gallery/9.webp";
-import pic11 from "../../assets/gallery/11.webp";
-import pic12 from "../../assets/gallery/12.webp";
-import pic14 from "../../assets/gallery/14.webp";
-import pic15 from "../../assets/gallery/15.webp";
-import pic17 from "../../assets/gallery/17.webp";
-import pic18 from "../../assets/gallery/18.webp";
-import pic19 from "../../assets/gallery/19.webp";
-import pic20 from "../../assets/gallery/20.webp";
-import pic21 from "../../assets/gallery/21.webp";
-import pic23 from "../../assets/gallery/23.webp";
-import { select } from "framer-motion/client";
+import "../../../index.css";
+import pic1 from "../../../assets/gallery/1.webp";
+import pic2 from "../../../assets/gallery/2.webp";
+import pic3 from "../../../assets/gallery/3.webp";
+
+import pic5 from "../../../assets/gallery/5.webp";
+import pic6 from "../../../assets/gallery/6.webp";
+import pic7 from "../../../assets/gallery/7.webp";
+import pic8 from "../../../assets/gallery/8.webp";
+import pic9 from "../../../assets/gallery/9.webp";
+import pic11 from "../../../assets/gallery/11.webp";
+import pic12 from "../../../assets/gallery/12.webp";
+import pic14 from "../../../assets/gallery/14.webp";
+import pic15 from "../../../assets/gallery/15.webp";
+import pic17 from "../../../assets/gallery/17.webp";
+import pic18 from "../../../assets/gallery/18.webp";
+import pic19 from "../../../assets/gallery/19.webp";
+import pic20 from "../../../assets/gallery/20.webp";
+import pic21 from "../../../assets/gallery/21.webp";
+import pic23 from "../../../assets/gallery/23.webp";
+import { LazyImage } from "./LazyImages";
 /*turns array of key value pair into object of key value pairs*/
 export interface Photo {
   id: string;
@@ -217,7 +217,7 @@ export default function PhotoGallery() {
           <div className="overflow-hidden border-4 border-gold-100 p-4 bg-transparent shadow-lg relative">
             <div ref={constraintsRef} className="overflow-hidden relative">
               <motion.div
-                className="grid grid-cols-6 md:grid-cols-6 gap-2 min-h-[400px] w-[calc(100%+200px)]"
+                className="grid grid-cols-6 md:grid-cols-6 gap-2 min-h-[400px] w-100%"
                 drag="x"
                 dragConstraints={constraintsRef}
                 dragElastic={0}
@@ -238,12 +238,10 @@ export default function PhotoGallery() {
                     }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 z-10" />
-                    <img
+                    <LazyImage
                       src={photo.url}
                       alt={photo.alt}
                       className="w-full h-full object-cover aspect-square"
-                      loading="lazy"
-                      draggable="false"
                     />
                   </div>
                 ))}
