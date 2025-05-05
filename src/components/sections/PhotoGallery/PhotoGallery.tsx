@@ -207,7 +207,7 @@ export default function PhotoGallery() {
           <div className="flex justify-center mb-4">
             <Camera className="w-12 h-12 text-gold-600" />
           </div>
-          <h2 className="text-3xl md:text-2xl font-serif mb-6 text-gold-800">
+          <h2 className="font-moul text-3xl md:text-2xl  mb-6 text-gold-800">
             កម្រងរូបភាពអនុស្សាវរីយ៍
           </h2>
         </motion.div>

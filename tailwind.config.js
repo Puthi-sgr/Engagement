@@ -32,6 +32,8 @@ export default {
       fontFamily: {
         serif: ["Cormorant Garamond", "serif"],
         "alex-brush": ["Alex Brush", "cursive"],
+        "odar-mean-chey": ["Odor Mean Chey", "cursive"],
+        moul: ["Moul, serif"],
       },
       animation: {
         "spin-slow": "spin 3s linear infinite",

@@ -30,10 +30,10 @@ export function VenueInformation() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl font-bold md:text-4xl font-serif mb-6 text-gold-800">
+            <h2 className="text-3xl font-moul md:text-4xl mb-6 text-gold-800">
               ទីតាំងកម្មវិធី
             </h2>
-            <p className="text-xl text-gold-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gold-600 max-w-3xl mx-auto font-odar-mean-chey">
               ភោជនីយដ្ឋាន De.Royce កែងផ្លូវ ៣៤៧ និងផ្លូវ ៥២៨ សង្កាត់បឹងកក់
               ខណ្ឌទួលគោក
             </p>

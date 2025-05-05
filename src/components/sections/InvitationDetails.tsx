@@ -8,10 +8,7 @@ import groomName from "../../assets/decorator/GroomName.png";
 import { SparkleArea } from "../Sparkle";
 import DecorativeElementContainer from "../decorativeComponents/DecorativeElementContainer";
 import { useInView } from "react-intersection-observer";
-interface InvitationDetailsProps {
-  leftColumnY: any;
-  rightColumnY: any;
-}
+
 export default function InvitationDetails() {
   const { ref, inView } = useInView({
     threshold: 0.05,
@@ -24,10 +21,10 @@ export default function InvitationDetails() {
       className="relative pt-12 md:py-24 overflow-hidden bg-gradient-to-b from-white/50 via-white to-white/30"
     >
       <div className="container mx-auto px-4">
-        <div className=" grid grid-cols-1 md:grid-cols-2 gap-1 max-w-7xl mx-auto">
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-0 max-w-7xl mx-auto">
           {/* Groom's Column */}
           <motion.div
-            className="grid-cols-1 place-items-center"
+            className="flex flex-col items-center justify-center w-full"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -40,48 +37,66 @@ export default function InvitationDetails() {
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  w-[200%] h-[200%]  md:w-[200%] md:h-[200%] object-contain"
               />
             </div>
-            <DecorativeElementContainer img={groomName} size={150} my={10} />
-            <div className="relative flex items-center justify-center my-4">
+            <div className="flex justify-center w-full">
+              <DecorativeElementContainer img={groomName} size={150} my={10} />
+            </div>
+            {inView && (
+              <SparkleArea
+                density={30}
+                colors={["#0000FF", "#4169E1", "#1E90FF", "#00BFFF", "#87CEEB"]}
+                minSize={5}
+                maxSize={10}
+              />
+            )}
+            <div className="relative flex items-center justify-center">
               <img
                 src={couple}
                 alt="Couple"
                 className="w-32 h-32 md:w-48 md:h-48"
               />
             </div>
-            {inView && (
-              <SparkleArea
-                density={10}
-                colors={["#0000FF", "#4169E1", "#1E90FF", "#00BFFF", "#87CEEB"]}
-                minSize={5}
-                maxSize={10}
-              />
-            )}
           </motion.div>
           {/* Bride's Column */}
           <motion.div
-            className="grid-cols-1 place-items-center"
+            className="flex flex-col items-center justify-center w-full"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ margin: "-100px" }}
           >
             <DecorativeElementContainer img={brideName} size={150} my={10} />
-            <div className="relative w-96 h-96 md:w-80 md:h-80 mx-auto mb-6 bg-transparent rounded-t-[100%] p-4">
-              <img
-                src={brideFrame}
-                alt="Pichta"
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] md:w-[200%] md:h-[200%] object-contain"
-              />
+            <div className="w-full">
+              <div className="relative w-96 h-96 md:w-80 md:h-80 mx-auto bg-transparent rounded-t-[100%]">
+                <img
+                  src={brideFrame}
+                  alt="Pichta"
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] md:w-[200%] md:h-[200%] object-contain"
+                />
+              </div>
+              {inView && (
+                <SparkleArea
+                  density={15}
+                  colors={[
+                    "#FF1493",
+                    "#FF69B4",
+                    "#FF007F",
+                    "#FFB6C1",
+                    "#FF4D6B",
+                  ]}
+                  minSize={5}
+                  maxSize={10}
+                />
+              )}
             </div>
-            {inView && (
-              <SparkleArea
-                density={10}
-                colors={["#FF1493", "#FF69B4", "#FF007F", "#FFB6C1", "#FF4D6B"]}
-                minSize={5}
-                maxSize={10}
-              />
-            )}
           </motion.div>
+          {inView && (
+            <SparkleArea
+              density={15}
+              colors={["#FFD700", "#FFC107", "#FFB300", "#FFA000", "#FF8F00"]}
+              minSize={5}
+              maxSize={10}
+            />
+          )}
         </div>
       </div>
       {/* <motion.div

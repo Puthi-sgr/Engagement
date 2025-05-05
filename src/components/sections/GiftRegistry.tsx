@@ -80,7 +80,7 @@ export function GiftRegistry() {
               <Gift className="w-12 h-12 text-gold-600" />
             </motion.div>
           </div>
-          <h2 className="text-xl md:text-xl font-serif mb-4 text-gold-600">
+          <h2 className="text-xl md:text-xl font-odar-mean-chey mb-4 text-gold-600">
             ចំពោះលោកលោកស្រីជាទីស្រលាញ់
             <br />
             ដែលមានបំណងបង្ហាញក្តីស្រលាញ់មកកាន់ពួកយើងទាំងពីរដោយការផ្តល់អំណោយ

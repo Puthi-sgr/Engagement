@@ -14,25 +14,13 @@ export default function useAudio() {
   useEffect(() => {
     // Create audio element
     const audio = new Audio(BACKGROUND_MUSIC_URL);
-    const startTime = 32;
-    const endTime = 213;
 
     audio.loop = true;
     audio.volume = 0.5;
-    audio.currentTime = startTime; // Start from 71.5 seconds
-
-    const handleTimeUpdate = () => {
-      if (audio.currentTime >= endTime) {
-        audio.currentTime = startTime; //Loop back to start time
-      }
-    };
-
-    audio.addEventListener("timeupdate", handleTimeUpdate);
     audioRef.current = audio;
     // Cleanup on unmount
     return () => {
       if (audioRef.current) {
-        audio.removeEventListener("timeupdate", handleTimeUpdate);
         audioRef.current.pause();
         audioRef.current = null;
       }

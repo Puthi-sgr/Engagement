@@ -13,14 +13,14 @@ export function EventTimeline() {
   const timelineEvents = [
     {
       time: "8:40 AM",
-      title: "ជួបជុំភ្ញៀវកិត្តយស",
+      title: "ជួបជុំភ្ញៀវកិត្តិយស",
       description: "",
       icon: <MessageCircleHeart w-6 h-6 />,
     },
     {
       time: "9:00 AM",
       title:
-        "ចាស់ទុំលោកមេបា ចាប់ផ្តើមពិធីចែចូវ បំពាក់ចញ្ចៀន និង គួចដៃបង្កក់សិរី",
+        "ចាស់ទុំលោកមេបា ចាប់ផ្តើមពិធីចែចូវ បំពាក់ចិញ្ចៀន និង គួចដៃបង្កក់សិរី",
 
       icon: <Heart className="w-6 h-6" />,
     },
@@ -54,7 +54,7 @@ export function EventTimeline() {
             viewport={{ once: true }}
             className="text-center mb-16 "
           >
-            <h2 className="text-4xl md:text-5xl font-serif mb-6 text-gold-800 animate-glow drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+            <h2 className="text-4xl md:text-5xl font-moul mb-6 text-gold-800 animate-glow drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]">
               របៀបវារៈកម្មវិធី
             </h2>
             <div className="flex justify-center">
@@ -93,10 +93,10 @@ export function EventTimeline() {
                       whileHover={{ y: -5 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <h3 className="text-2xl font-serif text-gold-600 mb-2">
+                      <h3 className="text-2xl font-bold font-serif text-gold-900 mb-2">
                         {event.time}
                       </h3>
-                      <h4 className="text-xl font-medium text-gold-800 mb-2">
+                      <h4 className="text-xl font-medium font-odar-mean-chey text-gold-800 mb-2">
                         {event.title}
                       </h4>
                       <p className="text-gold-500">{event.description}</p>

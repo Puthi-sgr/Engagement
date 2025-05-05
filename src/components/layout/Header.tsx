@@ -8,17 +8,7 @@ import Hero from "../../assets/images/Hero.webp";
 import { MotionValue } from "framer-motion";
 import { BackgroundOverlay } from "../decorativeComponents/BackgroundOverlay";
 
-interface HeaderProps {
-  scrollY: number;
-  heroScale: MotionValue<number>;
-  heroOpacity: MotionValue<number>;
-}
-
-export default function Header({
-  scrollY,
-  heroScale,
-  heroOpacity,
-}: HeaderProps) {
+export default function Header() {
   const [viewportHeight, setViewportHeight] = useState("101vh"); //initial state for header
 
   //This effect function handles the quirks of browsers in mobile phone
@@ -45,8 +35,6 @@ export default function Header({
       transition={{ duration: 0.5 }}
       style={{
         height: viewportHeight,
-        scale: heroScale,
-        opacity: heroOpacity,
       }}
     >
       <div>
@@ -59,10 +47,8 @@ export default function Header({
             backgroundImage: `url(${Hero})`,
             backgroundPosition: "53% center",
             backgroundSize: "cover",
-            transform: `scale(${1 + scrollY * 0.0002})`,
-            y: scrollY * 0.5,
           }}
-        />{" "}
+        />
         <div className="absolute inset-8 border-4 border-white/20 z-20" />
         <div className="absolute inset-7 border border-white/10 z-20" />
         <div className="absolute inset-0 bg-black/20" />
@@ -79,7 +65,7 @@ export default function Header({
           />
 
           <h1
-            className="text-6xl sm:text-3xl md:text-2xl lg:text-6xl xl:text-6xl mb-6 font-serif whitespace-nowrap"
+            className="text-6xl  sm:text-3xl md:text-2xl lg:text-6xl xl:text-6xl mb-6 font-alex-brush"
             style={{ color: "#FFF9C4" }}
           >
             Manith & Pichta

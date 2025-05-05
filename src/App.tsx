@@ -28,23 +28,11 @@ const InvitationDetails = lazy(
 function App() {
   const [entryScreenVisible, setEntryScreenVisible] = useState(true);
   const [scrollY, setScrollY] = useState(0);
-  const { scrollYProgress } = useScroll();
   const { ref, inView } = useInView({
     threshold: 0.2, // Trigger when 10% of component is visible
     triggerOnce: true, // Only trigger once
   });
   const { isPlaying, isMuted, toggleMute, startAudio } = useAudio();
-
-  const heroScale = useTransform(scrollYProgress, [0, 0.3], [1.01, 1.5], {
-    clamp: true,
-  });
-
-  const heroOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.3 /*scroll range*/],
-    [1, 0], // Direct pixel values
-    { clamp: true }
-  );
 
   //Memoize handleScroll
   const handleScroll = useCallback(() => setScrollY(window.scrollY), []);
@@ -98,11 +86,7 @@ function App() {
       >
         <AudioControls isMuted={isMuted} toggleMute={toggleMute} />
 
-        <Header
-          scrollY={scrollY}
-          heroScale={heroScale}
-          heroOpacity={heroOpacity}
-        />
+        <Header />
 
         <FormalRequest onShare={shareInvitation} />
         <VenueInformation />

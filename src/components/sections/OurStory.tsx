@@ -17,7 +17,7 @@ export function OurStory({ scrollY }: OurStoryProps) {
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-serif text-center mb-16 bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-500 bg-clip-text text-transparent py-1">
+          <h2 className="py-7 font-moul text-4xl md:text-5xl text-center mb-16 bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-500 bg-clip-text text-transparent py-1">
             ពីដំបូងឡើយ......
           </h2>
           <div className="grid md:grid-cols-2 gap-12">
@@ -33,7 +33,7 @@ export function OurStory({ scrollY }: OurStoryProps) {
               />
             </motion.div>
             <div className="flex items-center">
-              <p className="text-lg leading-relaxed bg-gradient-to-br from-amber-800 via-yellow-700 to-amber-600 bg-clip-text text-transparent">
+              <p className="font-odar-mean-chey text-lg leading-relaxed bg-gradient-to-br from-amber-800 via-yellow-700 to-amber-600 bg-clip-text text-transparent">
                 យើងបានស្គាល់គ្នាក្នុងវ័យសិក្សា បន្ទាប់មកដោយភាពចៃដន្យ
                 ក៏បានប្រែក្លាយទៅជាមិត្តភាពដ៏ជ្រាលជ្រៅ។
                 ដោយមាននិស្ស័យហើយប្រហែលជាយើងបានសាងបុណ្យរួមគ្នាពីជាតិមុន

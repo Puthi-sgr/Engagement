@@ -24,29 +24,26 @@ export const PhotoZoomModalView = ({
   const handleModalClose = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-
     setIsClosing(true);
-    const timer = setTimeout(() => {
-      console.log("Photo");
-      setSelectedPhoto(null);
-    }, 100);
-    useScrollLock(false);
-
-    return () => clearTimeout(timer);
+    setSelectedPhoto(null);
   };
   const getNextPhotoIndex = (currentId: string) => {
     const currentIndex = photos.findIndex((photo) => photo.id === currentId);
+
     return (currentIndex + 1) % photos.length; //wraps around the photos, avoid overflow of index.
   };
 
   const getPrevPhotoIndex = (currentId: string) => {
     const currentIndex = photos.findIndex((photo) => photo.id === currentId);
+
     return (currentIndex - 1 + photos.length) % photos.length;
   };
 
   const handleNextPhoto = () => {
     if (selectedPhoto) {
       const nextIndex = getNextPhotoIndex(selectedPhoto.id);
+      setIsClosing(true);
+
       return setSelectedPhoto(photos[nextIndex]);
     }
   };
@@ -66,16 +63,25 @@ export const PhotoZoomModalView = ({
       }
     };
 
-    document.addEventListener("touchmove", preventTouchMove, {
-      passive: false,
-    });
+    if (selectedPhoto) {
+      document.addEventListener("touchmove", preventTouchMove, {
+        passive: false,
+      });
+      return () => {
+        document.removeEventListener("touchmove", preventTouchMove);
+      };
+    }
+  }, [isDragging, selectedPhoto]);
 
+  useEffect(() => {
     return () => {
-      document.removeEventListener("touchmove", preventTouchMove);
+      // Cleanup on unmount
+      setIsClosing(false);
+      setDragPosition(0);
+      setIsDragging(false);
     };
-  }, [isDragging]);
+  }, []);
 
-  useScrollLock(true);
   return (
     <motion.div
       className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 "
@@ -118,8 +124,8 @@ export const PhotoZoomModalView = ({
           x: 0,
           transition: {
             type: "spring",
-            stiffness: 300,
-            damping: 30,
+            stiffness: 200,
+            damping: 10,
           },
         }}
         exit={{ scale: 0.9 }}
@@ -132,9 +138,9 @@ export const PhotoZoomModalView = ({
 
           // Swipe won't be handled with the isClosing is true
           if (!isClosing) {
-            if (offset.x < -80 && Math.abs(velocity.x) > 0.3) {
+            if (offset.x < -40 && Math.abs(velocity.x) > 0.2) {
               handleNextPhoto();
-            } else if (offset.x > 80 && Math.abs(velocity.x) > 0.3) {
+            } else if (offset.x > 40 && Math.abs(velocity.x) > 0.2) {
               handlePrevPhoto();
             }
           }
@@ -163,7 +169,6 @@ export const PhotoZoomModalView = ({
               opacity: 1,
               x: 0,
               transition: {
-                x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 },
               },
             }}
@@ -171,7 +176,6 @@ export const PhotoZoomModalView = ({
               opacity: 0,
 
               transition: {
-                x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 },
               },
             }}

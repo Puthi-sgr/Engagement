@@ -37,10 +37,11 @@ export function FormalRequest({ onShare }: DateAndVenueProps) {
             viewport={{ margin: "0px" }}
             className="mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-serif mb-6 text-gold-800">
+            <h2 className="text-4xl  font-moul md:text-5xl font-serif mb-3 text-gold-900 ">
               សូមគោរពអញ្ជើញ
             </h2>
-            <p className="text-xl text-gold-700 leading-relaxed">
+            <div className="w-32 h-1 bg-gold-600 mx-auto my-6 rounded-full" />
+            <p className="text-xl font-odar-mean-chey text-gold-900 leading-relaxed">
               ខ្ញុំបាទ និង នាងខ្ញុំមានកិត្តិយសសូមគោរពអញ្ជើញវត្តមាន
               <br />
               ដ៏ថ្លៃថ្លារបស់លោក លោកស្រីជាទីស្រលាញ់
@@ -60,9 +61,9 @@ export function FormalRequest({ onShare }: DateAndVenueProps) {
             >
               <MP />
             </motion.div>
-            <h3 className="text-2xl font-bold font-serif text-gold-600 mt-8">
-              ថ្ងៃទី៣១ <span className="mx-2">||</span> ខែឧសភា
-              <span className="mx-2 font-bold">||</span> ឆ្នាំ២០២៥
+            <h3 className="text-2xl font-moul text-gold-600 mt-8">
+              ថ្ងៃទី៣១ <span className="mx-2 font-sans">||</span> ខែឧសភា
+              <span className="mx-2 font-sans">||</span> ឆ្នាំ២០២៥
             </h3>
             <div className="flex items-center justify-center gap-8 mt-8 mb-8"></div>
           </motion.div>

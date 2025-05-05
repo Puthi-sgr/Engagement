@@ -2,14 +2,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "/",
+  "homepage": "https://manithpichta.online",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist --cname manithpichta.online"
   },
   "dependencies": {
     "@fontsource/alex-brush": "^5.2.5",
