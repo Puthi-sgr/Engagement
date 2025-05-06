@@ -17,7 +17,7 @@ export function OurStory({ scrollY }: OurStoryProps) {
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="py-7 font-moul text-4xl md:text-5xl text-center mb-16 bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-500 bg-clip-text text-transparent py-1">
+          <h2 className="py-7 font-odar-mean-chey text-4xl md:text-5xl text-center mb-16 bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-500 bg-clip-text text-transparent py-1">
             ពីដំបូងឡើយ......
           </h2>
           <div className="grid md:grid-cols-2 gap-12">

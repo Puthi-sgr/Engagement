@@ -18,7 +18,6 @@ export const PhotoZoomModalView = ({
   photos,
 }: ModalView) => {
   const [isDragging, setIsDragging] = useState(false);
-  const [dragPosition, setDragPosition] = useState(0);
   const [isClosing, setIsClosing] = useState(false);
 
   const handleModalClose = (e: React.MouseEvent) => {
@@ -51,33 +50,33 @@ export const PhotoZoomModalView = ({
   const handlePrevPhoto = () => {
     if (selectedPhoto) {
       const prevIndex = getPrevPhotoIndex(selectedPhoto.id);
+      setIsClosing(true);
       return setSelectedPhoto(photos[prevIndex]);
     }
   };
-  useEffect(() => {
-    const preventTouchMove = (e: TouchEvent) => {
-      if (!isDragging) return;
+  // useEffect(() => {
+  //   const preventTouchMove = (e: TouchEvent) => {
+  //     if (!isDragging) return;
 
-      if (e.target && (e.target as Element).closest(".modal-content")) {
-        e.preventDefault();
-      }
-    };
+  //     if (e.target && (e.target as Element).closest(".modal-content")) {
+  //       e.preventDefault();
+  //     }
+  //   };
 
-    if (selectedPhoto) {
-      document.addEventListener("touchmove", preventTouchMove, {
-        passive: false,
-      });
-      return () => {
-        document.removeEventListener("touchmove", preventTouchMove);
-      };
-    }
-  }, [isDragging, selectedPhoto]);
+  //   if (selectedPhoto) {
+  //     document.addEventListener("touchmove", preventTouchMove, {
+  //       passive: false,
+  //     });
+  //     return () => {
+  //       document.removeEventListener("touchmove", preventTouchMove);
+  //     };
+  //   }
+  // }, [isDragging, selectedPhoto]);
 
   useEffect(() => {
     return () => {
       // Cleanup on unmount
       setIsClosing(false);
-      setDragPosition(0);
       setIsDragging(false);
     };
   }, []);
@@ -88,7 +87,7 @@ export const PhotoZoomModalView = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      onClick={() => setSelectedPhoto(null)}
+      onClick={() => !isDragging && setSelectedPhoto(null)}
     >
       <motion.button
         className="absolute  z-10 left-4 top-1/2 -translate-y-1/2 text-white bg-gold-600/20 backdrop-blur-sm p-2 rounded-full"
@@ -134,29 +133,31 @@ export const PhotoZoomModalView = ({
         dragConstraints={{ left: 0, right: 0 }}
         onDragStart={() => setIsDragging(true)}
         onDragEnd={(e, { offset, velocity }) => {
+          const swipeThreshold = 40;
+          const velocityThreshold = 0.2;
           setIsDragging(false);
 
           // Swipe won't be handled with the isClosing is true
           if (!isClosing) {
-            if (offset.x < -40 && Math.abs(velocity.x) > 0.2) {
+            if (
+              offset.x < -swipeThreshold &&
+              Math.abs(velocity.x) > velocityThreshold
+            ) {
               handleNextPhoto();
-            } else if (offset.x > 40 && Math.abs(velocity.x) > 0.2) {
+            } else if (
+              offset.x > swipeThreshold &&
+              Math.abs(velocity.x) > velocityThreshold
+            ) {
               handlePrevPhoto();
             }
           }
-          setDragPosition(0);
-        }}
-        onDrag={(e, { offset }) => {
-          if (!isClosing) {
-            setDragPosition(offset.x);
-          }
+          setTimeout(() => setIsDragging(false), 50);
         }}
       >
         <AnimatePresence
           mode="wait"
           onExitComplete={() => {
             setIsClosing(false);
-            setDragPosition(0);
           }}
         >
           <motion.div

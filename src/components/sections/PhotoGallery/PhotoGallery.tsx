@@ -218,13 +218,9 @@ export default function PhotoGallery() {
             <div ref={constraintsRef} className="overflow-hidden relative">
               <motion.div
                 className="grid grid-cols-6 md:grid-cols-6 gap-2 min-h-[400px] w-100%"
-                drag="x"
                 dragConstraints={constraintsRef}
-                dragElastic={0}
-                initial={false} // Disable initial animation
                 onDragStart={() => setIsInteracting(true)}
                 onDragEnd={() => setTimeout(() => setIsInteracting(false), 100)}
-                style={{ touchAction: "pan-x" }} // Optimize for touch
               >
                 {photos.map((photo) => (
                   <div

@@ -37,7 +37,7 @@ export function FormalRequest({ onShare }: DateAndVenueProps) {
             viewport={{ margin: "0px" }}
             className="mb-12"
           >
-            <h2 className="text-4xl  font-moul md:text-5xl font-serif mb-3 text-gold-900 ">
+            <h2 className="text-4xl font-moul md:text-5xl  mb-3 text-gold-900 ">
               សូមគោរពអញ្ជើញ
             </h2>
             <div className="w-32 h-1 bg-gold-600 mx-auto my-6 rounded-full" />

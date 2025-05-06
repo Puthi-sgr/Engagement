@@ -32,7 +32,7 @@ export default {
       fontFamily: {
         serif: ["Cormorant Garamond", "serif"],
         "alex-brush": ["Alex Brush", "cursive"],
-        "odar-mean-chey": ["Odor Mean Chey", "cursive"],
+        "odar-mean-chey": ["Cormorant Garamond", "serif"],
         moul: ["Moul, serif"],
       },
       animation: {

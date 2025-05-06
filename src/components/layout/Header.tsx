@@ -10,8 +10,12 @@ import { BackgroundOverlay } from "../decorativeComponents/BackgroundOverlay";
 
 export default function Header() {
   const [viewportHeight, setViewportHeight] = useState("101vh"); //initial state for header
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: false,
+    delay: 0.2,
+  });
 
-  //This effect function handles the quirks of browsers in mobile phone
   useEffect(() => {
     const updateViewHeight = () => {
       //converting to px gives you more accurate control
@@ -36,6 +40,7 @@ export default function Header() {
       style={{
         height: viewportHeight,
       }}
+      ref={ref}
     >
       <div>
         <motion.div
@@ -79,34 +84,25 @@ export default function Header() {
           middleColor="transparent"
           endColor="gold"
         />
-        <SparkleArea
-          density={40}
-          maxDuration={2}
-          minDuration={1}
-          maxSize={10}
-          colors={[
-            "#FFFFFF",
-            "#FAFAFA",
-            "#F5F5F5",
-            "#FFFAFA",
-            "#F0F8FF",
-            "#F8F8FF",
-            "#FFFFF0",
-            "#FFFAF0",
-            "#FFF5EE",
-            "#FFFAFA",
-            "#F0FFFF",
-            "#FFFFFF",
-            "#FEFEFE",
-            "#FDFDFD",
-            "#FCFCFC",
-            "#FFE4E1",
-            "#FFF0F5",
-            "#FFFFFF",
-            "#F8F8FF",
-            "#FFFFF0",
-          ]}
-        />
+        {inView && (
+          <SparkleArea
+            density={30}
+            maxDuration={2}
+            minDuration={1}
+            maxSize={10}
+            colors={[
+              "#FFFFFF",
+              "#FAFAFA",
+              "#F5F5F5",
+              "#F8F8FF",
+              "#FFE4E1",
+              "#FFF0F5",
+              "#FFFFFF",
+              "#F8F8FF",
+              "#FFFFF0",
+            ]}
+          />
+        )}
       </div>
     </motion.section>
   );

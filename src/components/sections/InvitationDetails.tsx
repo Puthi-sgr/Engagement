@@ -42,7 +42,7 @@ export default function InvitationDetails() {
             </div>
             {inView && (
               <SparkleArea
-                density={30}
+                density={10}
                 colors={["#0000FF", "#4169E1", "#1E90FF", "#00BFFF", "#87CEEB"]}
                 minSize={5}
                 maxSize={10}
@@ -75,7 +75,7 @@ export default function InvitationDetails() {
               </div>
               {inView && (
                 <SparkleArea
-                  density={15}
+                  density={10}
                   colors={[
                     "#FF1493",
                     "#FF69B4",
@@ -89,14 +89,6 @@ export default function InvitationDetails() {
               )}
             </div>
           </motion.div>
-          {inView && (
-            <SparkleArea
-              density={15}
-              colors={["#FFD700", "#FFC107", "#FFB300", "#FFA000", "#FF8F00"]}
-              minSize={5}
-              maxSize={10}
-            />
-          )}
         </div>
       </div>
       {/* <motion.div

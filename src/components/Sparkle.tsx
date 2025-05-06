@@ -72,7 +72,7 @@ export const SparkleArea: React.FC<SparkleAreaProps> = ({
 
   useEffect(() => {
     // Initial sparkles
-    generateSparkles();
+    generateSparkles(Math.floor(density / 2));
 
     // Create new sparkles periodically
     const interval = setInterval(() => {
@@ -104,7 +104,7 @@ export const SparkleArea: React.FC<SparkleAreaProps> = ({
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {sparkles.map((sparkle) => (
           <div
             key={sparkle.id}
@@ -122,7 +122,7 @@ export const SparkleArea: React.FC<SparkleAreaProps> = ({
             />
           </div>
         ))}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </div>
   );
 };
